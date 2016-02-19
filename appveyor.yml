@@ -18,8 +18,9 @@ build_script:
 #    - cargo build --features="generic" --no-default-features
     
 test_script:
-    - ps: foreach ($service in get-content $ENV:APPVEYOR_BUILD_FOLDER\tooling\packaging\proglists\generic.txt) { cargo test --test $service --features $service --no-default-features }
-#    - cmd: for /F "tokens=*" %%A in (%APPVEYOR_BUILD_FOLDER%\tooling\packaging\proglists\generic.txt) do cargo test -p %a
+    - ps: foreach ($service in get-content $ENV:APPVEYOR_BUILD_FOLDER\tooling\packaging\proglists\generic.integration_tests.txt) { cargo test --test $service --features $service --no-default-features }
+#    - ps: foreach ($service in get-content $ENV:APPVEYOR_BUILD_FOLDER\tooling\packaging\proglists\generic.txt) { cargo test -p $service }    
+
     
 cache:
   - 'target'

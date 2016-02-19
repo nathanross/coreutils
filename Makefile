@@ -51,54 +51,7 @@ endif
 UTILS ?= $(PROGS)
 
 # Programs with usable tests
-TEST_PROGS  := \
-	base64 \
-	basename \
-	cat \
-	chmod \
-	cksum \
-	comm \
-	cp \
-	cut \
-	dirname \
-	echo \
-	env \
-	expr \
-	factor \
-	false \
-	fold \
-	hashsum \
-	head \
-	link \
-	ln \
-	mkdir \
-	mktemp \
-	mv \
-	nl \
-	paste \
-	printf \
-	ptx \
-	pwd \
-	readlink \
-	realpath \
-	rm \
-	rmdir \
-	seq \
-	sort \
-	split \
-	stdbuf \
-	sum \
-	tac \
-	tail \
-	test \
-	touch \
-	tr \
-	true \
-	truncate \
-	tsort \
-	unexpand \
-	unlink \
-	wc
+TEST_PROGS  := $(shell $(cat) $(PROGLIST_DIR)unix.integration_tests.txt $(PROGLIST_DIR)generic.integration_tests.txt )
 
 TESTS       := \
 	$(sort $(filter $(UTILS),$(filter-out $(SKIP_UTILS),$(TEST_PROGS))))
