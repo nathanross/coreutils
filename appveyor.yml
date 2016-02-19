@@ -14,7 +14,7 @@ install:
     - ps: cargo -V
     
 build_script:
-    - cargo build --features="generic" --no-default-features
+#    - cargo build --features="generic" --no-default-features
     
 test_script:
     - ps: foreach ($service in get-content  %APPVEYOR_BUILD_FOLDER%\tooling\packaging\proglists\generic.txt) { cargo test --test $service --features %service --no-default-features }
