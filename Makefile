@@ -36,87 +36,13 @@ BUSYBOX_ROOT := $(BASEDIR)/tmp/
 BUSYBOX_VER := 1.24.1
 BUSYBOX_SRC:=$(BUSYBOX_ROOT)/busybox-$(BUSYBOX_VER)/
 
-# Possible programs
-PROGS       := \
-  base64 \
-  basename \
-  cat \
-  cksum \
-  comm \
-  cp \
-  cut \
-  dirname \
-  echo \
-  env \
-  expand \
-  expr \
-  factor \
-  false \
-  fmt \
-  fold \
-  hashsum \
-  head \
-  link \
-  ln \
-  mkdir \
-  mktemp \
-  nl \
-  nproc \
-  od \
-  paste \
-  printenv \
-  printf \
-  ptx \
-  pwd \
-  readlink \
-  realpath \
-  relpath \
-  rm \
-  rmdir \
-  seq \
-  shred \
-  shuf \
-  sleep \
-  sort \
-  split \
-  sum \
-  sync \
-  tac \
-  tail \
-  tee \
-  test \
-  tr \
-  true \
-  truncate \
-  tsort \
-  unexpand \
-  uniq \
-  wc \
-  whoami \
-  yes
+PROGLIST_DIR := $(BASEDIR)/tooling/packaging/proglists/
+cat := $(if $(filter $(OS),Windows_NT),type,cat)
 
-UNIX_PROGS := \
-  chmod \
-  chroot \
-  du \
-  groups \
-  hostid \
-  hostname \
-  id \
-  kill \
-  logname \
-  mkfifo \
-  mv \
-  nice \
-  nohup \
-  stdbuf \
-  timeout \
-  touch \
-  tty \
-  uname \
-  unlink \
-  uptime \
-  users
+# Possible programs
+PROGS       := $(shell $(cat) $(PROGLIST_DIR)generic.txt)
+
+UNIX_PROGS := $(shell $(cat) $(PROGLIST_DIR)unix.txt)
 
 ifneq ($(OS),Windows_NT)
 	PROGS    := $(PROGS) $(UNIX_PROGS)
