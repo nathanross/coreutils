@@ -15,6 +15,6 @@ install:
     
 build_script:
     - cargo build --features="generic" --no-default-features
+    
 test_script:
     - cargo test
-    - cargo test -p printf
