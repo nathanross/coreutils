@@ -17,6 +17,6 @@ build_script:
     - cargo build --features="generic" --no-default-features
     
 test_script:
-    - for /F "tokens=*" %%A in (%APPVEYOR_BUILD_FOLDER%\tooling\packacking\proglists\generic.txt) do cargo test --test %%a --features %%a --no-default-features
-    - for /F "tokens=*" %%A in (%APPVEYOR_BUILD_FOLDER%\tooling\packacking\proglists\generic.txt) do cargo test -p %%a
+    - for /F "tokens=*" %%A in (%APPVEYOR_BUILD_FOLDER%\tooling\packaging\proglists\generic.txt) do cargo test --test %%a --features %%a --no-default-features
+    - for /F "tokens=*" %%A in (%APPVEYOR_BUILD_FOLDER%\tooling\packaging\proglists\generic.txt) do cargo test -p %%a
     
