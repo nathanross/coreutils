@@ -4,9 +4,6 @@ version = "0.0.1"
 authors = []
 build = "build.rs"
 
-[profile.dev]
-codegen-units = 4
-
 [features]
 unix = [
   "chmod",
