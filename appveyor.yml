@@ -9,6 +9,7 @@ environment:
   - TARGET: i686-pc-windows-gnu
 
 install:
+  - SET RUSTC_V = %RUSTC_V%
   - ps: . ${Env:APPVEYOR_BUILD_FOLDER}\tooling\build\windows\appveyor.install.ps1
   - call "C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\vcvarsall.bat" amd64
 
