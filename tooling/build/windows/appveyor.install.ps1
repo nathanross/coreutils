@@ -5,9 +5,9 @@ Function install_msys2($temp_dir, $install_dir, $arch, $ver) {
     #$download_loc ="https://kent.dl.sourceforge.net/project/msys2/Base/${arch}/msys2-base-${arch}-${ver}.tar.xz"
     $download_loc = "http://downloads.sourceforge.net/project/msys2/Base/${arch}/msys2-base-${arch}-${ver}.tar.xz?r=&ts=1456082848&use_mirror=iweb"
     echo "downloading from $download_loc"    
-    (New-Object System.Net.WebClient).DownloadFile($download_loc, "msys2.tar.xz")
-    7z x "${temp_dir}\msys2.tar.xz"
-    7Z x "${temp_dir}\msys2.tar" | Out-Null
+    Start-FileDownload $download_loc -FileName "msys2.tar.xz"
+    7z x "msys2.tar.xz"
+    7Z x "msys2.tar" | Out-Null
     mbash("")
     mbash("for i in {1..3}; do pacman --noconfirm -Suy mingw-w64-%MSYS2_ARCH%-{ragel,freetype,icu,gettext} libtool pkg-config gcc make autoconf automake perl && break || sleep 15; done")
 }
