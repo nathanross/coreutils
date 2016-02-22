@@ -20,6 +20,7 @@ Function mbash($command) {
     cd "${env:APPVEYOR_BUILD_FOLDER}\msys64\usr\bin\"
     $unixpath_appveyor_build_folder = unixify ${env:APPVEYOR_BUILD_FOLDER}
     $unixpath_dir_rust_install = unixify ${env:DIR_RUST_INSTALL}
-    .\"sh" --login -c "cd ${unixpath_appveyor_build_folder}; export PATH=`$PATH:${unixpath_dir_rust_install}/bin; exec 0</dev/null; $command"
+    $unixpath_mingw_install = unixify ${env:DIR_MINGW_INSTALL}
+    .\"sh" --login -c "cd ${unixpath_appveyor_build_folder}; export PATH=`$PATH:${unixpath_dir_rust_install}/bin:${unixpath_mingw_install}/mingw32/bin:${unixpath_mingw_install}/mingw64/bin; exec 0</dev/nullOD; $command"
 }
 
