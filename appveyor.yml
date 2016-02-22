@@ -6,7 +6,11 @@ environment:
     RUSTC_V: nightly
 
   matrix:
-  - TARGET: i686-pc-windows-gnu
+  - TARGET: x86_64-pc-windows-msvc
+#  - TARGET: i686-pc-windows-msvc
+#  - TARGET: x86_64-pc-windows-gnu
+#  - TARGET: x86_64-pc-windows-gnu
+  
 
 install:
   - SET RUSTC_V = %RUSTC_V%
