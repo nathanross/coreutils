@@ -15,7 +15,7 @@ install:
   - ps: . ${Env:APPVEYOR_BUILD_FOLDER}\tooling\build\windows\appveyor.install.ps1  
 
 build_script:
-  - ps : . ${Env:APPVEYOR_BUILD_FOLDER}\tooling\build\windows\appveyor.common.ps1; mbash("which rustc")  
+  - ps : . ${Env:APPVEYOR_BUILD_FOLDER}\tooling\build\windows\appveyor.common.ps1; mbash("make build")  
 #  - 7z a -tzip uutils.zip .\target\release\deps\*.exe
  
 #artifacts:
@@ -25,7 +25,7 @@ build_script:
 #    name: uutils.exe
 
 test_script:
-  - ps : . ${Env:APPVEYOR_BUILD_FOLDER}\tooling\build\windows\appveyor.common.ps1; mbash("rustc -vV")
+  - ps : . ${Env:APPVEYOR_BUILD_FOLDER}\tooling\build\windows\appveyor.common.ps1; mbash("make test")
 
 cache:
   - c:\cache
