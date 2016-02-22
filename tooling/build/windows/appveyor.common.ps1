@@ -2,12 +2,24 @@ $scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
 
 $env:MSYS2_BASEVER = "20160205"
 $env:MSYS2_ARCH = "x86_64"
-$env:TEMP_DIR= "${env:APPVEYOR_BUILD_FOLDER}\tmp"
-$env:MSYS2_DIR = "${env:TEMP_DIR}\msys2"
-$env:RUST_DIR= "${env:TEMP_DIR}\rust"
-$env:PATH="${env:PATH}:${env:RUST_DIR}\bin:${env:MSYS2_DIR}\bin"
+$env:DIR_TEMP= "c:\temp"
+$env:DIR_BUILD_CACHE= "c:\cache"
+$env:DIR_MSYS2_DOWNLOAD= "${env:DIR_BUILD_CACHE}"
+$env:DIR_RUST_DOWNLOAD= "${env:DIR_TEMP}"
+$env:DIR_RUST_INSTALL= "${env:DIR_TEMP}\rust"
+$env:DIR_MINGW_INSTALL= "${env:APPVEYOR_BUILD_FOLDER}\msys64"
+
+$env:PATH="${env:PATH}:${env:RUST_INSTALL}\bin:${env:DIR_MINGW_INSTALL}\bin:${env:DIR_MINGW_INSTALL}\usr\bin"
+
+Function unixify($winpath) {
+    return $winpath -replace 'c:','/c' -replace '\\','/'
+}
 
 Function mbash($command) {
-    echo "mbash"
-#    ${env:MSYS2_DIR}\msys64\usr\bin\./sh --login -c "cd ${env:APPVEYOR_BUILD_FOLDER}; PATH=${PATH}:/mingw64/bin:/mingw32/bin; exec 0</dev/null; $command"
+    echo "mingw call: ${command}"
+    cd "${env:APPVEYOR_BUILD_FOLDER}\msys64\usr\bin\"
+    $unixpath_appveyor_build_folder = unixify ${env:APPVEYOR_BUILD_FOLDER}
+    $unixpath_dir_rust_install = unixify ${env:DIR_RUST_INSTALL}
+    .\"sh" --login -c "cd ${unixpath_appveyor_build_folder}; export PATH=`$PATH:${unixpath_dir_rust_install}/bin; exec 0</dev/null; $command"
 }
+
