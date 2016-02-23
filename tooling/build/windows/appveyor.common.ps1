@@ -17,7 +17,8 @@ Function unixify($winpath) {
 
 Function mbash($command) {
     echo "mingw call: ${command}"
-    cd "${env:APPVEYOR_BUILD_FOLDER}\msys64\usr\bin\"
+#    cd "${env:APPVEYOR_BUILD_FOLDER}\msys64\usr\bin\"
+    cd "c:\msys64\usr\bin\"
     $unixpath_appveyor_build_folder = unixify ${env:APPVEYOR_BUILD_FOLDER}
     $unixpath_dir_rust_install = unixify ${env:DIR_RUST_INSTALL}
     $unixpath_mingw_install = unixify ${env:DIR_MINGW_INSTALL}
