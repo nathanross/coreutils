@@ -28,7 +28,7 @@ build_script:
 #    name: uutils.exe
 
 test_script:
-  - ps : . ${Env:APPVEYOR_BUILD_FOLDER}\tooling\build\windows\appveyor.common.ps1; mbash("make test"); $lastExitCode
+  - ps : . ${Env:APPVEYOR_BUILD_FOLDER}\tooling\build\windows\appveyor.common.ps1; mbash("make test"); $host.setshouldexit($lastExitCode)
 
 cache:
   - c:\cache
