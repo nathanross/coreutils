@@ -19,8 +19,10 @@ install:
   - ps: . ${Env:APPVEYOR_BUILD_FOLDER}\tooling\build\windows\appveyor.install.ps1  
 
 build_script:
-  - ps : . ${Env:APPVEYOR_BUILD_FOLDER}\tooling\build\windows\appveyor.common.ps1; mbash("make build")  
-#  - 7z a -tzip uutils.zip .\target\release\deps\*.exe
+  - true
+  # (by default "make build" builds both the individual binaries and
+  #  libs of all programs for this platform, whereas make test knows
+  #  it only needs to compile libs, and only for programs on this platform with integration tests)
  
 #artifacts:
 #  - path: uutils.zip
