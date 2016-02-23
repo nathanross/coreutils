@@ -190,7 +190,7 @@ build_exe_$(1):
 endef
 
 define TEST_INTEGRATION
-test_integration_$(1): build-uutils-tests
+test_integration_$(1):
 	${CARGO} test ${CARGOFLAGS} --test $(1) --features "$(1) $(TEST_SPEC_FEATURE)" --no-default-features $(TEST_NO_FAIL_FAST)
 endef
 
@@ -235,13 +235,18 @@ build-pkgs: $(addprefix build_exe_,$(EXES))
 build-uutils: 
 	${CARGO} build ${CARGOFLAGS} --features "${EXES}" ${PROFILE_CMD} --no-default-features
 
-build-uutils-tests:
-	${CARGO} build ${CARGOFLAGS} --features "${TESTS}" ${PROFILE_CMD} --no-default-features
-
 build: build-uutils build-pkgs
 
 $(foreach test,$(TESTS),$(eval $(call TEST_INTEGRATION,$(test))))
 $(foreach test,$(filter-out $(SKIP_UTILS),$(PROGS)),$(eval $(call TEST_BUSYBOX,$(test))))
+
+test-build-uutils:
+	${CARGO} build ${CARGOFLAGS} --features "${TESTS}" ${PROFILE_CMD} --no-default-features
+
+test-build-dev-dependencies:
+	${CARGO} test --no-default-features --no-run
+
+test-dry-run: test-build-uutils test-build-dev-dependencies test
 
 test: $(addprefix test_integration_,$(TESTS))
 
