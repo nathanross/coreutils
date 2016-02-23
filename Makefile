@@ -244,7 +244,7 @@ test-build-uutils:
 	${CARGO} build ${CARGOFLAGS} --features "${TESTS}" ${PROFILE_CMD} --no-default-features
 
 test-build-dev-dependencies:
-	${CARGO} test --no-default-features --no-run
+	${CARGO} test --test "true" --features "true" --no-default-features --no-run
 
 test-dry-run: test-build-uutils test-build-dev-dependencies test
 
