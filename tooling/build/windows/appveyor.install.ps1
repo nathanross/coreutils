@@ -15,7 +15,12 @@ Function install_msys2($download_dir, $arch, $ver) {
     7Z x "msys2.tar" | Out-Null
     echo "starting msys"
     mbash("")
-    mbash("for i in {1..3}; do pacman --noconfirm -Suy mingw-w64-${arch}-{ragel,freetype,icu,gettext} libtool pkg-config gcc make autoconf automake perl && break || sleep 15; done")
+    if ($arch.endsWith("gnu")) {
+        $pkglist="mingw-w64-${arch}-{ragel,freetype,icu,gettext} libtool pkg-config gcc make autoconf automake perl"
+    } else {
+        $pkglist="make"
+    }
+    mbash("for i in {1..3}; do pacman --noconfirm -Suy $pkglist && break || sleep 15; done")
 }
 
 Function install_rust($download_dir, $install_dir, $target_rs_triple, $rustc_ver) {
