@@ -9,9 +9,9 @@ $env:DIR_RUST_DOWNLOAD= "${env:DIR_BUILD_CACHE}"
 $env:DIR_RUST_INSTALL= "${env:DIR_TEMP}\rust"
 
 if (${env:TARGET}.endsWith("gnu")) {
-   $env:DIR_MINGW_INSTALL= "${env:APPVEYOR_BUILD_FOLDER}\msys64"
+   $env:DIR_MSYS2_INSTALL="${env:APPVEYOR_BUILD_FOLDER}\msys64"
 } else {
-   $env:DIR_MINGW_INSTALL= "c:\msys64"      
+   $env:DIR_MSYS2_INSTALL="c:\msys64"      
 }
 
 $env:MINGW_DIR_USED = "${env:APPVEYOR_BUILD_FOLDER}"
@@ -27,7 +27,7 @@ Function mbash($command) {
     cd "${env:DIR_MSYS2_INSTALL}\usr\bin\"
     $unixpath_appveyor_build_folder = unixify ${env:APPVEYOR_BUILD_FOLDER}
     $unixpath_dir_rust_install = unixify ${env:DIR_RUST_INSTALL}
-    $unixpath_mingw_install = unixify ${env:DIR_MINGW_INSTALL}
-    .\"sh" --login -c "cd ${unixpath_appveyor_build_folder}; export PATH=`$PATH:${unixpath_dir_rust_install}/bin:${unixpath_mingw_install}/mingw32/bin:${unixpath_mingw_install}/mingw64/bin; exec 0</dev/null; $command; exit $?"
+    $unixpath_msys2_install = unixify ${env:DIR_MSYS2_INSTALL}
+    .\"sh" --login -c "cd ${unixpath_appveyor_build_folder}; export PATH=`$PATH:${unixpath_dir_rust_install}/bin:${unixpath_msys2_install}/mingw32/bin:${unixpath_msys2_install}/mingw64/bin; exec 0</dev/null; $command; exit $?"
 }
 
