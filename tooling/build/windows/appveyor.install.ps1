@@ -32,7 +32,7 @@ Function mktmpdir($tmpdir_path) {
 
 mktmpdir ${env:DIR_TEMP}
 mktmpdir ${env:DIR_BUILD_CACHE} 
-if ($arch.endsWith("gnu")) {
+if (${env:TARGET}.endsWith("gnu")) {
    install_msys2 ${env:DIR_MSYS2_DOWNLOAD} ${env:MSYS2_ARCH} ${env:MSYS2_BASEVER}
 }
 install_rust ${env:DIR_RUST_DOWNLOAD} ${env:DIR_RUST_INSTALL} ${env:TARGET} ${env:RUSTC_V}
