@@ -19,7 +19,8 @@ install:
   - ps: . ${Env:APPVEYOR_BUILD_FOLDER}\tooling\build\windows\appveyor.install.ps1  
 
 build_script:
-  - ps : . ${Env:APPVEYOR_BUILD_FOLDER}\tooling\build\windows\appveyor.common.ps1; mbash("make test-dry-run")
+  - ps : mbash("make test-dry-run")
+#  - ps : . ${Env:APPVEYOR_BUILD_FOLDER}\tooling\build\windows\appveyor.common.ps1; mbash("make test-dry-run")
  
 #artifacts:
 #  - path: uutils.zip
