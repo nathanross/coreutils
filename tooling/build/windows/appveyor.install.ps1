@@ -4,9 +4,8 @@ $scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
 $env:MSYS2_BASEVER = "20160205"
 $env:MSYS2_ARCH = "x86_64"
 $env:DIR_TEMP= "c:\temp"
-$env:DIR_BUILD_CACHE= "c:\cache"
-$env:DIR_MSYS2_DOWNLOAD= "${env:DIR_TEMP}"
-$env:DIR_RUST_DOWNLOAD= "${env:DIR_BUILD_CACHE}"
+$env:DIR_MSYS2_DOWNLOAD= "${env:DIR_TEMP}\msys_download"
+$env:DIR_RUST_DOWNLOAD= "${env:DIR_TEMP}\rust_download"
 $env:DIR_RUST_INSTALL= "${env:DIR_TEMP}\rust"
 
 if (${env:TARGET}.endsWith("gnu")) {
@@ -36,7 +35,11 @@ Function install_msys2($download_dir, $arch, $ver) {
     #$download_loc ="https://kent.dl.sourceforge.net/project/msys2/Base/${arch}/msys2-base-${arch}-${ver}.tar.xz"
     $download_loc = "http://downloads.sourceforge.net/project/msys2/Base/${arch}/msys2-base-${arch}-${ver}.tar.xz?r=&ts=1456082848&use_mirror=iweb"
     echo "downloading from $download_loc"
-    Start-FileDownload $download_loc -FileName "${download_dir}\msys2.tar.xz"
+    if (-not (Test-Path "${download_dir}\msys2.tar.xz")) { 
+        Start-FileDownload $download_loc -FileName "${download_dir}\msys2.tar.xz"
+    } else {
+        echo "using recent msys2 image from cache"
+    }
     echo "extracting"
     7z x "${download_dir}\msys2.tar.xz"
     7Z x "msys2.tar" | Out-Null
@@ -48,13 +51,21 @@ Function install_msys2($download_dir, $arch, $ver) {
 
 Function install_rust($download_dir, $install_dir, $target_rs_triple, $rustc_ver) {
     $download_loc = "https://static.rust-lang.org/dist/rust-${rustc_ver}-${target_rs_triple}.exe"
-    echo "downloading from $download_loc"
-    if (-not (Test-Path "${download_dir}\rust.exe")) {
-        Start-FileDownload $download_loc -FileName "${download_dir}\rust.exe"
+    $dated_ver = $rustc_ver
+    if ($rustc_ver -eq "nightly" -or $rustc_ver -eq "beta") {
+       $today = Get-Date /UFormat "%Y-%m-%d"
+       $dated_ver = "${binsig}.${today}"
+    }
+    if (-not (Test-Path "${download_dir}\rust.${dated_ver}.exe")) {
+        echo "downloading from $download_loc"
+        rm ${download_dir}\rust*
+        Start-FileDownload $download_loc -FileName "${download_dir}\rust.$dated_ver.exe"
+    } else {
+        echo "using recent rust image from cache"
     }
     echo "installing rust"
     cd ${download_dir}
-    .\rust.exe /VERYSILENT /NORESTART /DIR="$install_dir" | Out-Null
+    .\"rust.$dated_ver.exe" /VERYSILENT /NORESTART /DIR="$install_dir" | Out-Null
 }
 
 Function mktmpdir($tmpdir_path) {
@@ -62,7 +73,8 @@ Function mktmpdir($tmpdir_path) {
 }
 
 mktmpdir ${env:DIR_TEMP}
-mktmpdir ${env:DIR_BUILD_CACHE} 
+mktmpdir ${env:DIR_MSYS2_DOWNLOAD}
+mktmpdir ${env:DIR_RUST_DOWNLOAD}
 if (${env:TARGET}.endsWith("gnu")) {
    install_msys2 ${env:DIR_MSYS2_DOWNLOAD} ${env:MSYS2_ARCH} ${env:MSYS2_BASEVER}
 }
