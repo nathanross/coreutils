@@ -1,0 +1,24 @@
+platform:
+  - x64
+
+environment:
+  global:
+    RUSTC_V: nightly
+
+  matrix:
+  - TARGET: x86_64-pc-windows-msvc
+
+install:
+  - SET RUSTC_V = %RUSTC_V%
+  - set PATH=c:\Program Files (x86)\MSBuild\14.0\Bin\;%PATH%
+  - ps: . ${Env:APPVEYOR_BUILD_FOLDER}\tooling\build\windows\appveyor.install.ps1  
+
+build_script:
+  - ps : mbash("make test-dry-run")
+ 
+
+test_script:
+  - ps : mbash("make test"); $host.setshouldexit($lastExitCode)
+
+cache:
+  - c:\temp\rust_download
