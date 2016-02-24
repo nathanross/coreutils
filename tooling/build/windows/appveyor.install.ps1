@@ -71,7 +71,7 @@ Function mktmpdir($tmpdir_path) {
 }
 
 Function main() {
-    set_env_vars()
+    set_env_vars
     mktmpdir ${env:DIR_TEMP}
     mktmpdir ${env:DIR_MSYS2_DOWNLOAD}
     mktmpdir ${env:DIR_RUST_DOWNLOAD}
