@@ -7,29 +7,18 @@ environment:
 
   matrix:
   - TARGET: x86_64-pc-windows-msvc
-  - TARGET: i686-pc-windows-msvc
-  - TARGET: x86_64-pc-windows-gnu
-  - TARGET: x86_64-pc-windows-gnu
-  
 
 install:
   - SET RUSTC_V = %RUSTC_V%
-#- call "C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\vcvarsall.bat" amd64
   - set PATH=c:\Program Files (x86)\MSBuild\14.0\Bin\;%PATH%
   - ps: . ${Env:APPVEYOR_BUILD_FOLDER}\tooling\build\windows\appveyor.install.ps1  
 
 build_script:
-  - ps : mbash("make PROFILE=release build")
-  - 7z a -tzip uutils.zip .\target\release\deps\*.exe
-
-artifacts:
-  - path: uutils.zip
-    name: zipfile
-  - path: target\release\uutils.exe
-    name: uutils.exe
+  - ps : mbash("make test-dry-run")
+ 
 
 test_script:
   - ps : mbash("make test"); $host.setshouldexit($lastExitCode)
 
 cache:
-  - c:\cache
+  - c:\temp\rust_download
