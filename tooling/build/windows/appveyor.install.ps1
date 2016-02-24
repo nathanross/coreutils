@@ -49,21 +49,20 @@ Function install_rust($download_dir, $install_dir, $target_rs_triple, $rustc_ver
     $download_loc = "https://static.rust-lang.org/dist/rust-${rustc_ver}-${target_rs_triple}.exe"
     $dated_ver = $rustc_ver
     if ($rustc_ver -eq "nightly" -or $rustc_ver -eq "beta") {
-       $today = Get-Date -UFormat "%Y-%m-%d"
-       $dated_ver = "${rustc_ver}.${today}"
+       $today = Get-Date -UFormat "%Y_%m_%d"
+       $dated_ver = "${rustc_ver}_${today}"
     }
-    if (-not (Test-Path "${download_dir}\rust.${dated_ver}.exe")) {
+    if (-not (Test-Path "${download_dir}\${dated_ver}\rust.exe")) {
         echo "downloading from $download_loc"
-        rm ${download_dir}\rust*
-        Start-FileDownload $download_loc -FileName "${download_dir}\rust.$dated_ver.exe"
+        rm -Recurse ${download_dir}\*
+        Start-FileDownload $download_loc -FileName "${download_dir}\${dated_ver}\rust.exe"
     } else {
         echo "using recent rust image from cache"
     }
     echo "installing rust"
-    cd ${download_dir}
-    echo "running rust.$dated_ver.exe"
+    cd "${download_dir}\${dated_ver}"
     ls
-    .\"rust.$dated_ver.exe" /VERYSILENT /NORESTART /DIR="$install_dir" | Out-Null
+    .\rust.exe /VERYSILENT /NORESTART /DIR="$install_dir" | Out-Null
 }
 
 Function mktmpdir($tmpdir_path) {
