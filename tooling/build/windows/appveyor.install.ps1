@@ -9,6 +9,7 @@ Function set_env_vars() {
     if (${env:TARGET}.endsWith("gnu")) {
         $env:DIR_MSYS2_INSTALL="${env:APPVEYOR_BUILD_FOLDER}\msys64"
     } else {
+        #use appveyor's stock msys2 installation
         $env:DIR_MSYS2_INSTALL="c:\msys64"
     }
     $env:PATH="${env:PATH}:${env:RUST_INSTALL}\bin:${env:DIR_MSYS2_INSTALL}\bin:${env:DIR_MSYS2_INSTALL}\usr\bin"

@@ -246,7 +246,7 @@ test-build-uutils:
 test-build-dev-dependencies:
 	${CARGO} test --test "true" --features "true" --no-default-features --no-run
 
-test-dry-run: test-build-uutils test-build-dev-dependencies test
+test-dry-run: test-build-uutils test-build-dev-dependencies
 
 test: $(addprefix test_integration_,$(TESTS))
 
