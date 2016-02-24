@@ -14,11 +14,11 @@ install:
   - ps: . ${Env:APPVEYOR_BUILD_FOLDER}\tooling\build\windows\appveyor.install.ps1  
 
 build_script:
-  - ps : mbash("make test-dry-run")
+  - ps : mbash("make UTILS='cksum' test-dry-run")
  
 
 test_script:
-  - ps : mbash("RUST_BACKTRACE=1 make test"); $host.setshouldexit($lastExitCode)
+  - ps : mbash("RUST_BACKTRACE=1 make UTILS='cksum' test"); $host.setshouldexit($lastExitCode)
 
 cache:
   - c:\temp\rust_download
