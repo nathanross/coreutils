@@ -58,7 +58,7 @@ fn cksum(fname: &str) -> io::Result<(u32, usize)> {
         }
     };
 
-    //let mut bytes: [u8; 1024 * 1024] = unsafe { mem::uninitialized() };
+    let mut bytes: [u8; 1024 * 1024] = unsafe { mem::uninitialized() };
     /*loop {
         match rd.read(&mut bytes) {
             Ok(num_bytes) => {
