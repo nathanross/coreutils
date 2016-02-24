@@ -55,6 +55,7 @@ Function install_rust($download_dir, $install_dir, $target_rs_triple, $rustc_ver
     if (-not (Test-Path "${download_dir}\${dated_ver}\rust.exe")) {
         echo "downloading from $download_loc"
         rm -Recurse ${download_dir}\*
+        mktmpdir "${download_dir}\${dated_ver}"
         Start-FileDownload $download_loc -FileName "${download_dir}\${dated_ver}\rust.exe"
     } else {
         echo "using recent rust image from cache"
