@@ -24,7 +24,7 @@ Function mbash($command) {
     $unixpath_appveyor_build_folder = unixify ${env:APPVEYOR_BUILD_FOLDER}
     $unixpath_dir_rust_install = unixify ${env:DIR_RUST_INSTALL}
     $unixpath_msys2_install = unixify ${env:DIR_MSYS2_INSTALL}
-    .\"sh" --login -c "cd ${unixpath_appveyor_build_folder}; export PATH=`$PATH:${unixpath_dir_rust_install}/bin:${unixpath_msys2_install}/mingw32/bin:${unixpath_msys2_install}/mingw64/bin; exec 0</dev/null; $command; exit $?"
+    .\"sh" --login -c "cd ${unixpath_appveyor_build_folder}; export PATH=`$PATH:${unixpath_dir_rust_install}/bin:${unixpath_msys2_install}/mingw32/bin:${unixpath_msys2_install}/mingw64/bin; exec 0</dev/null; $command"
 }
 
 Function install_msys2($download_dir, $arch, $ver) {
