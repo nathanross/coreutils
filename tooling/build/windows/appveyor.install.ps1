@@ -53,7 +53,7 @@ Function install_rust($download_dir, $install_dir, $target_rs_triple, $rustc_ver
     $download_loc = "https://static.rust-lang.org/dist/rust-${rustc_ver}-${target_rs_triple}.exe"
     $dated_ver = $rustc_ver
     if ($rustc_ver -eq "nightly" -or $rustc_ver -eq "beta") {
-       $today = Get-Date /UFormat "%Y-%m-%d"
+       $today = Get-Date -UFormat "%Y-%m-%d"
        $dated_ver = "${binsig}.${today}"
     }
     if (-not (Test-Path "${download_dir}\rust.${dated_ver}.exe")) {
