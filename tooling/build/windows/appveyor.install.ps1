@@ -1,19 +1,19 @@
-$scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
-#. $scriptPath\appveyor.common.ps1
-
-$env:MSYS2_BASEVER = "20160205"
-$env:MSYS2_ARCH = "x86_64"
-$env:DIR_TEMP= "c:\temp"
-$env:DIR_MSYS2_DOWNLOAD= "${env:DIR_TEMP}\msys_download"
-$env:DIR_RUST_DOWNLOAD= "${env:DIR_TEMP}\rust_download"
-$env:DIR_RUST_INSTALL= "${env:DIR_TEMP}\rust"
-if (${env:TARGET}.endsWith("gnu")) {
-   $env:DIR_MSYS2_INSTALL="${env:APPVEYOR_BUILD_FOLDER}\msys64"
-} else {
-   $env:DIR_MSYS2_INSTALL="c:\msys64"      
+# these are set as env vars so they can be referenced in outside appveyor scripts
+Function set_env_vars() {
+    $env:MSYS2_BASEVER = "20160205"
+    $env:MSYS2_ARCH = "x86_64"
+    $env:DIR_TEMP= "c:\temp"
+    $env:DIR_MSYS2_DOWNLOAD= "${env:DIR_TEMP}\msys_download"
+    $env:DIR_RUST_DOWNLOAD= "${env:DIR_TEMP}\rust_download"
+    $env:DIR_RUST_INSTALL= "${env:DIR_TEMP}\rust"
+    if (${env:TARGET}.endsWith("gnu")) {
+        $env:DIR_MSYS2_INSTALL="${env:APPVEYOR_BUILD_FOLDER}\msys64"
+    } else {
+        $env:DIR_MSYS2_INSTALL="c:\msys64"
+    }
+    $env:PATH="${env:PATH}:${env:RUST_INSTALL}\bin:${env:DIR_MSYS2_INSTALL}\bin:${env:DIR_MSYS2_INSTALL}\usr\bin"
 }
-$env:PATH="${env:PATH}:${env:RUST_INSTALL}\bin:${env:DIR_MSYS2_INSTALL}\bin:${env:DIR_MSYS2_INSTALL}\usr\bin"
-
+    
 Function unixify($winpath) {
     return $winpath -replace 'c:','/c' -replace '\\','/'
 }
@@ -61,7 +61,7 @@ Function install_rust($download_dir, $install_dir, $target_rs_triple, $rustc_ver
     }
     echo "installing rust"
     cd ${download_dir}
-    echo "running $rust.dated_ver.exe"
+    echo "running rust.$dated_ver.exe"
     ls
     .\"rust.$dated_ver.exe" /VERYSILENT /NORESTART /DIR="$install_dir" | Out-Null
 }
@@ -70,10 +70,15 @@ Function mktmpdir($tmpdir_path) {
     New-Item -ItemType Directory -Force -Path $tmpdir_path | Out-Null
 }
 
-mktmpdir ${env:DIR_TEMP}
-mktmpdir ${env:DIR_MSYS2_DOWNLOAD}
-mktmpdir ${env:DIR_RUST_DOWNLOAD}
-if (${env:TARGET}.endsWith("gnu")) {
-   install_msys2 ${env:DIR_MSYS2_DOWNLOAD} ${env:MSYS2_ARCH} ${env:MSYS2_BASEVER}
+Function main() {
+    set_env_vars()
+    mktmpdir ${env:DIR_TEMP}
+    mktmpdir ${env:DIR_MSYS2_DOWNLOAD}
+    mktmpdir ${env:DIR_RUST_DOWNLOAD}
+    if (${env:TARGET}.endsWith("gnu")) {
+        install_msys2 ${env:DIR_MSYS2_DOWNLOAD} ${env:MSYS2_ARCH} ${env:MSYS2_BASEVER}
+    }
+    install_rust ${env:DIR_RUST_DOWNLOAD} ${env:DIR_RUST_INSTALL} ${env:TARGET} ${env:RUSTC_V}
 }
-install_rust ${env:DIR_RUST_DOWNLOAD} ${env:DIR_RUST_INSTALL} ${env:TARGET} ${env:RUSTC_V}
+
+main
