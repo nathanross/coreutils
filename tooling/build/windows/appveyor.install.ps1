@@ -54,7 +54,7 @@ Function install_rust($download_dir, $install_dir, $target_rs_triple, $rustc_ver
     $dated_ver = $rustc_ver
     if ($rustc_ver -eq "nightly" -or $rustc_ver -eq "beta") {
        $today = Get-Date -UFormat "%Y-%m-%d"
-       $dated_ver = "${binsig}.${today}"
+       $dated_ver = "${rustc_ver}.${today}"
     }
     if (-not (Test-Path "${download_dir}\rust.${dated_ver}.exe")) {
         echo "downloading from $download_loc"
@@ -65,6 +65,8 @@ Function install_rust($download_dir, $install_dir, $target_rs_triple, $rustc_ver
     }
     echo "installing rust"
     cd ${download_dir}
+    echo "running $rust.dated_ver.exe"
+    ls
     .\"rust.$dated_ver.exe" /VERYSILENT /NORESTART /DIR="$install_dir" | Out-Null
 }
 
