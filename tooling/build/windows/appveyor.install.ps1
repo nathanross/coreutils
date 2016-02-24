@@ -7,16 +7,12 @@ $env:DIR_TEMP= "c:\temp"
 $env:DIR_MSYS2_DOWNLOAD= "${env:DIR_TEMP}\msys_download"
 $env:DIR_RUST_DOWNLOAD= "${env:DIR_TEMP}\rust_download"
 $env:DIR_RUST_INSTALL= "${env:DIR_TEMP}\rust"
-
 if (${env:TARGET}.endsWith("gnu")) {
    $env:DIR_MSYS2_INSTALL="${env:APPVEYOR_BUILD_FOLDER}\msys64"
 } else {
    $env:DIR_MSYS2_INSTALL="c:\msys64"      
 }
-
-$env:MINGW_DIR_USED = "${env:APPVEYOR_BUILD_FOLDER}"
-
-$env:PATH="${env:PATH}:${env:RUST_INSTALL}\bin:${env:DIR_MINGW_INSTALL}\bin:${env:DIR_MINGW_INSTALL}\usr\bin"
+$env:PATH="${env:PATH}:${env:RUST_INSTALL}\bin:${env:DIR_MSYS2_INSTALL}\bin:${env:DIR_MSYS2_INSTALL}\usr\bin"
 
 Function unixify($winpath) {
     return $winpath -replace 'c:','/c' -replace '\\','/'
