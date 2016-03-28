@@ -258,7 +258,7 @@ impl AtPath {
     }
 
     fn normalize_msvc_readlink_abspath(s : &str) -> String {
-       let prefix_msvc_readlink = "\\\\??\\";
+       let prefix_msvc_readlink = "\\\\??\\\\";
        String::from(if s.starts_with(prefix_msvc_readlink) {
            &s[prefix_msvc_readlink.len()..]
        } else {
