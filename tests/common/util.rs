@@ -206,7 +206,9 @@ impl AtPath {
         log_info("resolve_link", self.plus_as_string(path));
         match fs::read_link(&self.plus(path)) {
             Ok(p) => {
-                self.minus_as_string(p.to_str().unwrap())
+                let normalized_path=
+                    AtPath::normalize_msvc_readlink_abspath(p.to_str().unwrap());
+                self.minus_as_string(&normalized_path)
             }
             Err(_) => "".to_string(),
         }
@@ -253,6 +255,15 @@ impl AtPath {
     pub fn root_dir_resolved(&self) -> String {
         log_info("current_directory_resolved", "");
         self.subdir.canonicalize().unwrap().to_str().unwrap().to_owned()
+    }
+
+    fn normalize_msvc_readlink_abspath(s : &str) -> String {
+       let prefix_msvc_readlink = "\\\\?\\";
+       String::from(if s.starts_with(prefix_msvc_readlink) {
+           &s[prefix_msvc_readlink.len()..]
+       } else {
+           s
+       })
     }
 }
 
