@@ -143,15 +143,15 @@ impl AtPath {
     fn minus(&self, name: &str) -> PathBuf {
         // relative_from is currently unstable
         let prefixed = PathBuf::from(name);
-        if prefixed.starts_with(&self.subdir) {
-            let mut unprefixed = PathBuf::new();
-            for component in prefixed.components()
-                                     .skip(self.subdir.components().count()) {
-                unprefixed.push(component.as_ref().to_str().unwrap());
-            }
-            unprefixed
-        } else {
-            prefixed
+        match prefixed.strip_prefix(&self.subdir) {
+              Ok(p) => { PathBuf::from(p) },
+              _ => {
+                  let canonical_path = self.subdir.canonicalize().unwrap();
+                  match prefixed.strip_prefix(&canonical_path) {
+                      Ok(p) => { PathBuf::from(p) },
+                      _ => prefixed.clone()
+                  }
+              }
         }
     }
     pub fn minus_as_string(&self, name: &str) -> String {
