@@ -58,28 +58,25 @@ fn test_keywords() {
 #[test]
 fn test_internal_db() {
     let (at, mut ucmd) = testing(UTIL_NAME);
-    ucmd.arg("-p");
-    let out = ucmd.run().stdout;
-    let filename = "internal.expected";
-    assert_eq!(out, at.read(filename));
+    ucmd.arg("-p")
+        .succeeds()
+        .stdout_only(at.read("internal.expected"));
 }
 
 #[test]
 fn test_bash_default() {
     let (at, mut ucmd) = testing(UTIL_NAME);
-    ucmd.arg("-b");
-    let out = ucmd.env("TERM", "screen").run().stdout;
-    let filename = "bash_def.expected";
-    assert_eq!(out, at.read(filename));
+    ucmd.arg("-b").env("TERM", "screen")
+        .succeeds()
+        .stdout_only(at.read("bash_def.expected"));
 }
 
 #[test]
 fn test_csh_default() {
     let (at, mut ucmd) = testing(UTIL_NAME);
-    ucmd.arg("-c");
-    let out = ucmd.env("TERM", "screen").run().stdout;
-    let filename = "csh_def.expected";
-    assert_eq!(out, at.read(filename));
+    ucmd.env("TERM", "screen").arg("-c")
+        .succeeds()
+        .stdout_only(at.read("csh_def.expected"));
 }
 
 #[test]
@@ -92,20 +89,21 @@ fn test_no_env() {
 #[test]
 fn test_exclusive_option() {
     let (_, mut ucmd) = testing(UTIL_NAME);
-    ucmd.arg("-cp");
-    ucmd.fails();
+    ucmd.arg("-cp").fails();
 }
 
 fn test_helper(file_name: &str, term: &str) {
     let (at, mut ucmd) = testing(UTIL_NAME);
-    ucmd.arg("-c").env("TERM", term);
-    let out = ucmd.arg(format!("{}.txt", file_name)).run().stdout;
     let filename = format!("{}.csh.expected", file_name);
-    assert_eq!(out, at.read(&filename));
+    ucmd.env("TERM", term)
+        .arg("-c").arg(format!("{}.txt", file_name))
+        .succeeds()
+        .stdout_only(at.read(&filename));
 
     let (at, mut ucmd) = testing(UTIL_NAME);
-    ucmd.arg("-b").env("TERM", term);
-    let out = ucmd.arg(format!("{}.txt", file_name)).run().stdout;
     let filename = format!("{}.sh.expected", file_name);
-    assert_eq!(out, at.read(&filename));
+    ucmd.env("TERM", term)
+        .arg("-b").arg(format!("{}.txt", file_name))
+        .succeeds()
+        .stdout_only(at.read(&filename));
 }
