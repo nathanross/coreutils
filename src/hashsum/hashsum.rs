@@ -90,34 +90,31 @@ pub fn uumain(args: Vec<String>) -> i32 {
     let binary_flag_default = cfg!(windows);
 
     let mut opts = uucore::coreopts::CoreOptions();
-        optflag("b", "binary", &format!("read in binary mode{}", if binary_flag_default { " (default)" } else { "" }))
-        optflag("c", "check", "read hashsums from the FILEs and check them")
-        optflag("", "tag", "create a BSD-style checksum")
-        optflag("t", "text", &format!("read in text mode{}", if binary_flag_default { "" } else { " (default)" }))
-        optflag("q", "quiet", "don't print OK for each successfully verified file")
-        optflag("s", "status", "don't output anything, status code shows success")
-        optflag("", "strict", "exit non-zero for improperly formatted checksum lines")
-        optflag("w", "warn", "warn about improperly formatted checksum lines")
-        optflag("h", "help", "display this help and exit")
-        optflag("V", "version", "output version information and exit")
+        .optflag("b", "binary", &format!("read in binary mode{}", if binary_flag_default { " (default)" } else { "" }))
+        .optflag("c", "check", "read hashsums from the FILEs and check them")
+        .optflag("", "tag", "create a BSD-style checksum")
+        .optflag("t", "text", &format!("read in text mode{}", if binary_flag_default { "" } else { " (default)" }))
+        .optflag("q", "quiet", "don't print OK for each successfully verified file")
+        .optflag("s", "status", "don't output anything, status code shows success")
+        .optflag("", "strict", "exit non-zero for improperly formatted checksum lines")
+        .optflag("w", "warn", "warn about improperly formatted checksum lines")
+        .optflag("h", "help", "display this help and exit")
+        .optflag("V", "version", "output version information and exit")
 
     if !is_custom_binary(program) {
-            optflag("", "md5", "work with MD5")
-            optflag("", "sha1", "work with SHA1")
-            optflag("", "sha224", "work with SHA224")
-            optflag("", "sha256", "work with SHA256")
-            optflag("", "sha384", "work with SHA384")
-            optflag("", "sha512", "work with SHA512")
-            optflag("", "sha3-224", "work with SHA3-224")
-            optflag("", "sha3-256", "work with SHA3-256")
-            optflag("", "sha3-384", "work with SHA3-384")
-            optflag("", "sha3-512", "work with SHA3-512")
+            .optflag("", "md5", "work with MD5")
+            .optflag("", "sha1", "work with SHA1")
+            .optflag("", "sha224", "work with SHA224")
+            .optflag("", "sha256", "work with SHA256")
+            .optflag("", "sha384", "work with SHA384")
+            .optflag("", "sha512", "work with SHA512")
+            .optflag("", "sha3-224", "work with SHA3-224")
+            .optflag("", "sha3-256", "work with SHA3-256")
+            .optflag("", "sha3-384", "work with SHA3-384")
+            .optflag("", "sha3-512", "work with SHA3-512")
     }
 
-    let matches = match opts.parse(&args[1..]) {
-        Ok(m) => m,
-        Err(f) => crash!(1, "{}", f)
-    };
+        .parse(args);
 
     if matches.opt_present("help") {
         usage(program, binary_name, &opts);

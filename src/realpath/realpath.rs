@@ -25,16 +25,13 @@ static VERSION: &'static str = env!("CARGO_PKG_VERSION");
 pub fn uumain(args: Vec<String>) -> i32 {
     let mut opts = uucore::coreopts::CoreOptions();
 
-        optflag("h", "help", "Show help and exit")
-        optflag("V", "version", "Show version and exit")
-        optflag("s", "strip", "Only strip '.' and '..' components, but don't resolve symbolic links")
-        optflag("z", "zero", "Separate output filenames with \\0 rather than newline")
-        optflag("q", "quiet", "Do not print warnings for invalid paths")
+        .optflag("h", "help", "Show help and exit")
+        .optflag("V", "version", "Show version and exit")
+        .optflag("s", "strip", "Only strip '.' and '..' components, but don't resolve symbolic links")
+        .optflag("z", "zero", "Separate output filenames with \\0 rather than newline")
+        .optflag("q", "quiet", "Do not print warnings for invalid paths")
 
-    let matches = match opts.parse(&args[1..]) {
-        Ok(m) => m,
-        Err(f) => {
-            show_error!("{}", f);
+        .parse(args);
             show_usage(&opts);
             return 1
         }

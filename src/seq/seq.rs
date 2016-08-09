@@ -130,11 +130,11 @@ fn parse_options(args: Vec<String>, options: &mut SeqOptions) -> Result<Vec<Stri
 fn print_help() {
     let mut opts = uucore::coreopts::CoreOptions();
 
-        optopt("s", "separator", "Separator character (defaults to \\n)", "")
-        optopt("t", "terminator", "Terminator character (defaults to separator)", "")
-        optflag("w", "widths", "Equalize widths of all numbers by padding with zeros")
-        optflag("h", "help", "print this help text and exit")
-        optflag("V", "version", "print version and exit")
+        .optopt("s", "separator", "Separator character (defaults to \\n)", "")
+        .optopt("t", "terminator", "Terminator character (defaults to separator)", "")
+        .optflag("w", "widths", "Equalize widths of all numbers by padding with zeros")
+        .optflag("h", "help", "print this help text and exit")
+        .optflag("V", "version", "print version and exit")
 
     println!("{} {}\n", NAME, VERSION);
     println!("Usage:\n  {} [-w] [-s string] [-t string] [first [step]] last\n", NAME);

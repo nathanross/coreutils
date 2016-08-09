@@ -76,19 +76,19 @@ enum NumberFormat {
 pub fn uumain(args: Vec<String>) -> i32 {
     let mut opts = uucore::coreopts::CoreOptions();
 
-        optopt("b", "body-numbering", "use STYLE for numbering body lines", "STYLE")
-        optopt("d", "section-delimiter", "use CC for separating logical pages", "CC")
-        optopt("f", "footer-numbering", "use STYLE for numbering footer lines", "STYLE")
-        optopt("h", "header-numbering", "use STYLE for numbering header lines", "STYLE")
-        optopt("i", "line-increment", "line number increment at each line", "")
-        optopt("l", "join-blank-lines", "group of NUMBER empty lines counted as one", "NUMBER")
-        optopt("n", "number-format", "insert line numbers according to FORMAT", "FORMAT")
-        optflag("p", "no-renumber", "do not reset line numbers at logical pages")
-        optopt("s", "number-separator", "add STRING after (possible) line number", "STRING")
-        optopt("v", "starting-line-number", "first line number on each logical page", "NUMBER")
-        optopt("w", "number-width", "use NUMBER columns for line numbers", "NUMBER")
-        optflag("", "help", "display this help and exit")
-        optflag("V", "version", "version")
+        .optopt("b", "body-numbering", "use STYLE for numbering body lines", "STYLE")
+        .optopt("d", "section-delimiter", "use CC for separating logical pages", "CC")
+        .optopt("f", "footer-numbering", "use STYLE for numbering footer lines", "STYLE")
+        .optopt("h", "header-numbering", "use STYLE for numbering header lines", "STYLE")
+        .optopt("i", "line-increment", "line number increment at each line", "")
+        .optopt("l", "join-blank-lines", "group of NUMBER empty lines counted as one", "NUMBER")
+        .optopt("n", "number-format", "insert line numbers according to FORMAT", "FORMAT")
+        .optflag("p", "no-renumber", "do not reset line numbers at logical pages")
+        .optopt("s", "number-separator", "add STRING after (possible) line number", "STRING")
+        .optopt("v", "starting-line-number", "first line number on each logical page", "NUMBER")
+        .optopt("w", "number-width", "use NUMBER columns for line numbers", "NUMBER")
+        .optflag("", "help", "display this help and exit")
+        .optflag("V", "version", "version")
 
     // A mutable settings object, initialized with the defaults.
     let mut settings = Settings {
@@ -105,10 +105,7 @@ pub fn uumain(args: Vec<String>) -> i32 {
         number_separator: String::from("\t"),
     };
 
-    let given_options = match opts.parse(&args[1..]) {
-        Ok (m) => { m }
-        Err(f) => {
-            show_error!("{}", f);
+        .parse(args);
             print_usage(&opts);
             return 1
         }

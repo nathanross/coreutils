@@ -193,20 +193,17 @@ pub fn uumain(args: Vec<String>) -> i32 {
     let mut opts = uucore::coreopts::CoreOptions();
 
     // TODO: Add force option
-        optopt("n", "iterations", "overwrite N times instead of the default (3)", "N")
-        optopt("s", "size", "shred this many bytes (suffixes like K, M, G accepted)", "FILESIZE")
-        optflag("u", "remove", "truncate and remove the file after overwriting; See below")
-        optflag("v", "verbose", "show progress")
+        .optopt("n", "iterations", "overwrite N times instead of the default (3)", "N")
+        .optopt("s", "size", "shred this many bytes (suffixes like K, M, G accepted)", "FILESIZE")
+        .optflag("u", "remove", "truncate and remove the file after overwriting; See below")
+        .optflag("v", "verbose", "show progress")
     opts.optflag("x", "exact", "do not round file sizes up to the next full block; \
                                 this is the default for non-regular files");
-        optflag("z", "zero", "add a final overwrite with zeros to hide shredding")
-        optflag("", "help", "display this help and exit")
-        optflag("", "version", "output version information and exit")
+        .optflag("z", "zero", "add a final overwrite with zeros to hide shredding")
+        .optflag("", "help", "display this help and exit")
+        .optflag("", "version", "output version information and exit")
 
-    let matches = match opts.parse(&args[1..]) {
-        Ok(m)  => m,
-        Err(e) => panic!("Invalid options\n{}", e)
-    };
+        .parse(args);
 
     if matches.opt_present("help") {
         show_help(&opts);

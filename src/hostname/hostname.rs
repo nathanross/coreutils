@@ -45,17 +45,14 @@ pub fn uumain(args: Vec<String>) -> i32 {
     let program = &args[0];
 
     let mut opts = uucore::coreopts::CoreOptions();
-        optflag("d", "domain", "Display the name of the DNS domain if possible")
-        optflag("i", "ip-address", "Display the network address(es) of the host")
-        optflag("f", "fqdn", "Display the FQDN (Fully Qualified Domain Name) (default)")   // TODO: support --long
-        optflag("s", "short", "Display the short hostname (the portion before the first dot) if possible")
-        optflag("h", "help", "Show help")
-        optflag("V", "version", "Show program's version")
+        .optflag("d", "domain", "Display the name of the DNS domain if possible")
+        .optflag("i", "ip-address", "Display the network address(es) of the host")
+        .optflag("f", "fqdn", "Display the FQDN (Fully Qualified Domain Name) (default)")   // TODO: support --long
+        .optflag("s", "short", "Display the short hostname (the portion before the first dot) if possible")
+        .optflag("h", "help", "Show help")
+        .optflag("V", "version", "Show program's version")
 
-    let matches = match opts.parse(&args[1..]) {
-        Ok(m) => { m }
-        _ => { help_menu(program, opts); return 0; }
-    };
+        .parse(args);
 
     if matches.opt_present("h") {
         help_menu(program, opts);

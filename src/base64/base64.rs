@@ -23,7 +23,7 @@ static VERSION: &'static str = env!("CARGO_PKG_VERSION");
 
 pub fn uumain(args: Vec<String>) -> i32 {
     let mut opts = uucore::coreopts::CoreOptions();
-        optflag("d", "decode", "decode data")
+        .optflag("d", "decode", "decode data")
     opts.optflag("i",
                  "ignore-garbage",
                  "when decoding, ignore non-alphabetic characters");
@@ -31,12 +31,9 @@ pub fn uumain(args: Vec<String>) -> i32 {
                 "wrap",
                 "wrap encoded lines after COLS character (default 76, 0 to disable wrapping)",
                 "COLS");
-        optflag("", "help", "display this help text and exit")
-        optflag("", "version", "output version information and exit")
-    let matches = match opts.parse(&args[1..]) {
-        Ok(m) => m,
-        Err(e) => {
-            disp_err!("{}", e);
+        .optflag("", "help", "display this help text and exit")
+        .optflag("", "version", "output version information and exit")
+        .parse(args);
             return 1;
         }
     };

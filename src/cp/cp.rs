@@ -31,16 +31,13 @@ static VERSION: &'static str = env!("CARGO_PKG_VERSION");
 pub fn uumain(args: Vec<String>) -> i32 {
     let mut opts = uucore::coreopts::CoreOptions();
 
-        optflag("h", "help", "display this help and exit")
-        optflag("", "version", "output version information and exit")
-        optopt("t", "target-directory", "copy all SOURCE arguments into DIRECTORY", "DEST")
-        optflag("T", "no-target-directory", "Treat DEST as a regular file and not a directory")
-        optflag("v", "verbose", "explicitly state what is being done")
+        .optflag("h", "help", "display this help and exit")
+        .optflag("", "version", "output version information and exit")
+        .optopt("t", "target-directory", "copy all SOURCE arguments into DIRECTORY", "DEST")
+        .optflag("T", "no-target-directory", "Treat DEST as a regular file and not a directory")
+        .optflag("v", "verbose", "explicitly state what is being done")
 
-    let matches = match opts.parse(&args[1..]) {
-        Ok(m) => m,
-        Err(e) => {
-            show_error!("{}", e);
+        .parse(args);
             panic!()
         },
     };

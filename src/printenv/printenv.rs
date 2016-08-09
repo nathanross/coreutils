@@ -24,13 +24,10 @@ static VERSION: &'static str = env!("CARGO_PKG_VERSION");
 
 pub fn uumain(args: Vec<String>) -> i32 {
     let mut opts = uucore::coreopts::CoreOptions();
-        optflag("0", "null", "end each output line with 0 byte rather than newline")
-        optflag("h", "help", "display this help and exit")
-        optflag("V", "version", "output version information and exit")
-    let matches = match opts.parse(&args[1..]) {
-        Ok(m) => m,
-        Err(f) => {
-            crash!(1, "Invalid options\n{}", f)
+        .optflag("0", "null", "end each output line with 0 byte rather than newline")
+        .optflag("h", "help", "display this help and exit")
+        .optflag("V", "version", "output version information and exit")
+        .parse(args);
         }
     };
     if matches.opt_present("help") {

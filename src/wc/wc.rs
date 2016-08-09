@@ -72,18 +72,15 @@ static VERSION: &'static str = env!("CARGO_PKG_VERSION");
 pub fn uumain(args: Vec<String>) -> i32 {
     let mut opts = uucore::coreopts::CoreOptions();
 
-        optflag("c", "bytes", "print the byte counts")
-        optflag("m", "chars", "print the character counts")
-        optflag("l", "lines", "print the newline counts")
-        optflag("L", "max-line-length", "print the length of the longest line")
-        optflag("w", "words", "print the word counts")
-        optflag("h", "help", "display this help and exit")
-        optflag("V", "version", "output version information and exit")
+        .optflag("c", "bytes", "print the byte counts")
+        .optflag("m", "chars", "print the character counts")
+        .optflag("l", "lines", "print the newline counts")
+        .optflag("L", "max-line-length", "print the length of the longest line")
+        .optflag("w", "words", "print the word counts")
+        .optflag("h", "help", "display this help and exit")
+        .optflag("V", "version", "output version information and exit")
 
-    let mut matches = match opts.parse(&args[1..]) {
-        Ok(m) => m,
-        Err(f) => crash!(1, "Invalid options\n{}", f)
-    };
+        .parse(args);
 
     if matches.opt_present("help") {
         println!("{} {}", NAME, VERSION);

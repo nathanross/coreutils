@@ -30,16 +30,13 @@ pub fn uumain(args: Vec<String>) -> i32 {
     // Linux-specific options, not implemented
     // opts.optflag("Z", "context", "set SELinux secutiry context" +
     // " of each created directory to CTX"),
-        optopt("m", "mode", "set file mode", "755")
-        optflag("p", "parents", "make parent directories as needed")
-        optflag("v", "verbose", "print a message for each printed directory")
-        optflag("h", "help", "display this help")
-        optflag("V", "version", "display this version")
+        .optopt("m", "mode", "set file mode", "755")
+        .optflag("p", "parents", "make parent directories as needed")
+        .optflag("v", "verbose", "print a message for each printed directory")
+        .optflag("h", "help", "display this help")
+        .optflag("V", "version", "display this version")
 
-    let matches = match opts.parse(&args[1..]) {
-        Ok(m) => m,
-        Err(f) => crash!(1, "Invalid options\n{}", f)
-    };
+        .parse(args);
 
     if args.len() == 1 || matches.opt_present("help") {
         print_help(&opts);

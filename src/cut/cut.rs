@@ -410,15 +410,15 @@ fn cut_files(mut filenames: Vec<String>, mode: Mode) -> i32 {
 pub fn uumain(args: Vec<String>) -> i32 {
     let mut opts = uucore::coreopts::CoreOptions::new();
 
-        optopt("b", "bytes", "filter byte columns from the input source", "sequence")
-        optopt("c", "characters", "alias for character mode", "sequence")
-        optopt("d", "delimiter", "specify the delimiter character that separates fields in the input source. Defaults to Tab.", "delimiter")
-        optopt("f", "fields", "filter field columns from the input source", "sequence")
-        optflag("n", "", "legacy option - has no effect.")
-        optflag("", "complement", "invert the filter - instead of displaying only the filtered columns, display all but those columns")
-        optflag("s", "only-delimited", "in field mode, only print lines which contain the delimiter")
-        optflag("z", "zero-terminated", "instead of filtering columns based on line, filter columns based on \\0 (NULL character)")
-        optopt("", "output-delimiter", "in field mode, replace the delimiter in output lines with this option's argument", "new delimiter")
+        .optopt("b", "bytes", "filter byte columns from the input source", "sequence")
+        .optopt("c", "characters", "alias for character mode", "sequence")
+        .optopt("d", "delimiter", "specify the delimiter character that separates fields in the input source. Defaults to Tab.", "delimiter")
+        .optopt("f", "fields", "filter field columns from the input source", "sequence")
+        .optflag("n", "", "legacy option - has no effect.")
+        .optflag("", "complement", "invert the filter - instead of displaying only the filtered columns, display all but those columns")
+        .optflag("s", "only-delimited", "in field mode, only print lines which contain the delimiter")
+        .optflag("z", "zero-terminated", "instead of filtering columns based on line, filter columns based on \\0 (NULL character)")
+        .optopt("", "output-delimiter", "in field mode, replace the delimiter in output lines with this option's argument", "new delimiter")
     let usage = opts.usage("Prints specified byte or field columns from each line of stdin or the input files");
     opts.help(format!("
  {0} {1}

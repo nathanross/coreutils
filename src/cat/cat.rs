@@ -26,23 +26,20 @@ static VERSION: &'static str = env!("CARGO_PKG_VERSION");
 
 pub fn uumain(args: Vec<String>) -> i32 {
     let mut opts = uucore::coreopts::CoreOptions();
-        optflag("A", "show-all", "equivalent to -vET")
+        .optflag("A", "show-all", "equivalent to -vET")
     opts.optflag("b", "number-nonblank",
                  "number nonempty output lines, overrides -n");
-        optflag("e", "", "equivalent to -vE")
-        optflag("E", "show-ends", "display $ at end of each line")
-        optflag("n", "number", "number all output lines")
-        optflag("s", "squeeze-blank", "suppress repeated empty output lines")
-        optflag("t", "", "equivalent to -vT")
-        optflag("T", "show-tabs", "display TAB characters as ^I")
+        .optflag("e", "", "equivalent to -vE")
+        .optflag("E", "show-ends", "display $ at end of each line")
+        .optflag("n", "number", "number all output lines")
+        .optflag("s", "squeeze-blank", "suppress repeated empty output lines")
+        .optflag("t", "", "equivalent to -vT")
+        .optflag("T", "show-tabs", "display TAB characters as ^I")
     opts.optflag("v", "show-nonprinting",
                  "use ^ and M- notation, except for LF (\\n) and TAB (\\t)");
-        optflag("h", "help", "display this help and exit")
-        optflag("V", "version", "output version information and exit")
-    let matches = match opts.parse(&args[1..]) {
-        Ok(m) => m,
-        Err(f) => panic!("Invalid options\n{}", f)
-    };
+        .optflag("h", "help", "display this help and exit")
+        .optflag("V", "version", "output version information and exit")
+        .parse(args);
     if matches.opt_present("help") {
         let msg = format!("{} {}\n\n\
         Usage:\n  {0} [OPTION]... [FILE]...\n\n\

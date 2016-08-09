@@ -869,24 +869,21 @@ impl Stater {
 pub fn uumain(args: Vec<String>) -> i32 {
     let mut opts = uucore::coreopts::CoreOptions();
 
-        optflag("h", "help", "display this help and exit")
-        optflag("", "version", "output version information and exit")
+        .optflag("h", "help", "display this help and exit")
+        .optflag("", "version", "output version information and exit")
 
-        optflag("L", "dereference", "follow links")
+        .optflag("L", "dereference", "follow links")
     opts.optflag("f",
                  "file-system",
                  "display file system status instead of file status");
-        optflag("t", "terse", "print the information in terse form")
+        .optflag("t", "terse", "print the information in terse form")
 
     // Omit the unused description as they are too long
-        optopt("c", "format", "", "FORMAT")
-        optopt("", "printf", "", "FORMAT")
+        .optopt("c", "format", "", "FORMAT")
+        .optopt("", "printf", "", "FORMAT")
 
 
-    let matches = match opts.parse(&args[1..]) {
-        Ok(m) => m,
-        Err(f) => {
-            disp_err!("{}", f);
+        .parse(args);
             return 1;
         }
     };

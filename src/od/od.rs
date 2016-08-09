@@ -49,32 +49,29 @@ pub fn uumain(args: Vec<String>) -> i32 {
                 ("output strings of at least BYTES graphic chars. 3 is assumed when \
                  BYTES is not specified."),
                 "BYTES");
-        optflag("a", "", "named characters, ignoring high-order bit")
-        optflag("b", "", "octal bytes")
-        optflag("c", "", "ASCII characters or backslash escapes")
-        optflag("d", "", "unsigned decimal 2-byte units")
-        optflag("o", "", "unsigned decimal 2-byte units")
+        .optflag("a", "", "named characters, ignoring high-order bit")
+        .optflag("b", "", "octal bytes")
+        .optflag("c", "", "ASCII characters or backslash escapes")
+        .optflag("d", "", "unsigned decimal 2-byte units")
+        .optflag("o", "", "unsigned decimal 2-byte units")
 
-        optflag("I", "", "decimal 2-byte units")
-        optflag("L", "", "decimal 2-byte units")
-        optflag("i", "", "decimal 2-byte units")
+        .optflag("I", "", "decimal 2-byte units")
+        .optflag("L", "", "decimal 2-byte units")
+        .optflag("i", "", "decimal 2-byte units")
 
-        optflag("O", "", "octal 4-byte units")
-        optflag("s", "", "decimal 4-byte units")
+        .optflag("O", "", "octal 4-byte units")
+        .optflag("s", "", "decimal 4-byte units")
 
-        optopt("t", "format", "select output format or formats", "TYPE")
-        optflag("v", "output-duplicates", "do not use * to mark line suppression")
+        .optopt("t", "format", "select output format or formats", "TYPE")
+        .optflag("v", "output-duplicates", "do not use * to mark line suppression")
     opts.optopt("w", "width",
                 ("output BYTES bytes per output line. 32 is implied when BYTES is not \
                  specified."),
                 "BYTES");
-        optflag("h", "help", "display this help and exit.")
-        optflag("", "version", "output version information and exit.")
+        .optflag("h", "help", "display this help and exit.")
+        .optflag("", "version", "output version information and exit.")
 
-    let matches = match opts.parse(&args[1..]) {
-        Ok(m) => m,
-        Err(f) => panic!("Invalid options\n{}", f)
-    };
+        .parse(args);
 
     let input_offset_base = match parse_radix(matches.opt_str("A")) {
         Ok(r) => r,

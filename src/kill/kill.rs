@@ -36,18 +36,15 @@ pub enum Mode {
 pub fn uumain(args: Vec<String>) -> i32 {
     let mut opts = uucore::coreopts::CoreOptions();
 
-        optflag("h", "help", "display this help and exit")
-        optflag("V", "version", "output version information and exit")
-        optopt("s", "signal", "specify the <signal> to be sent", "SIGNAL")
-        optflagopt("l", "list", "list all signal names, or convert one to a name", "LIST")
-        optflag("L", "table", "list all signal names in a nice table")
+        .optflag("h", "help", "display this help and exit")
+        .optflag("V", "version", "output version information and exit")
+        .optopt("s", "signal", "specify the <signal> to be sent", "SIGNAL")
+        .optflagopt("l", "list", "list all signal names, or convert one to a name", "LIST")
+        .optflag("L", "table", "list all signal names in a nice table")
 
     let (args, obs_signal) = handle_obsolete(args);
 
-    let matches = match opts.parse(&args[1..]) {
-        Ok(m) => m,
-        Err(_) => {
-            help(&opts);
+        .parse(args);
             return EXIT_ERR;
         },
     };

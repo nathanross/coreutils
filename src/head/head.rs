@@ -55,17 +55,14 @@ pub fn uumain(args: Vec<String>) -> i32 {
 
     let mut opts = uucore::coreopts::CoreOptions();
 
-        optopt("c", "bytes", "Print the first K bytes.  With the leading '-', print all but the last K bytes", "[-]K")
-        optopt("n", "lines", "Print the first K lines.  With the leading '-', print all but the last K lines", "[-]K")
-        optflag("q", "quiet", "never print headers giving file names")
-        optflag("v", "verbose", "always print headers giving file names")
-        optflag("h", "help", "display this help and exit")
-        optflag("V", "version", "output version information and exit")
+        .optopt("c", "bytes", "Print the first K bytes.  With the leading '-', print all but the last K bytes", "[-]K")
+        .optopt("n", "lines", "Print the first K lines.  With the leading '-', print all but the last K lines", "[-]K")
+        .optflag("q", "quiet", "never print headers giving file names")
+        .optflag("v", "verbose", "always print headers giving file names")
+        .optflag("h", "help", "display this help and exit")
+        .optflag("V", "version", "output version information and exit")
 
-    let matches = match opts.parse(&args) {
-        Ok (m) => { m }
-        Err(_) => {
-            println!("{}", opts.usage(""));
+        .parse(args);
             return 1;
         }
     };

@@ -77,15 +77,12 @@ fn open(name: &str) -> Result<Box<Read>> {
 pub fn uumain(args: Vec<String>) -> i32 {
     let mut opts = uucore::coreopts::CoreOptions();
 
-        optflag("r", "", "use the BSD compatible algorithm (default)")
-        optflag("s", "sysv", "use System V compatible algorithm")
-        optflag("h", "help", "show this help message")
-        optflag("v", "version", "print the version and exit")
+        .optflag("r", "", "use the BSD compatible algorithm (default)")
+        .optflag("s", "sysv", "use System V compatible algorithm")
+        .optflag("h", "help", "show this help message")
+        .optflag("v", "version", "print the version and exit")
 
-    let matches = match opts.parse(&args[1..]) {
-        Ok(m) => m,
-        Err(f) => crash!(1, "Invalid options\n{}", f)
-    };
+        .parse(args);
 
     if matches.opt_present("help") {
         let msg = format!("{0} {1}

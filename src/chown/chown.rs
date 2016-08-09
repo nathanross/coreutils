@@ -53,15 +53,15 @@ pub fn uumain(args: Vec<String>) -> i32 {
     opts.optflag("c",
                  "changes",
                  "like verbose but report only when a change is made");
-        optflag("f", "silent", "")
-        optflag("", "quiet", "suppress most error messages")
+        .optflag("f", "silent", "")
+        .optflag("", "quiet", "suppress most error messages")
     opts.optflag("v",
                  "verbose",
                  "output a diagnostic for every file processed");
-        optflag("", "dereference", "affect the referent of each symbolic link (this is the default), rather than the symbolic link itself")
-        optflag("h", "no-dereference", "affect symbolic links instead of any referenced file (useful only on systems that can change the ownership of a symlink)")
+        .optflag("", "dereference", "affect the referent of each symbolic link (this is the default), rather than the symbolic link itself")
+        .optflag("h", "no-dereference", "affect symbolic links instead of any referenced file (useful only on systems that can change the ownership of a symlink)")
 
-        optopt("", "from", "change the owner and/or group of each file only if its current owner and/or group match those specified here. Either may be omitted, in which case a match is not required for the omitted attribute", "CURRENT_OWNER:CURRENT_GROUP")
+        .optopt("", "from", "change the owner and/or group of each file only if its current owner and/or group match those specified here. Either may be omitted, in which case a match is not required for the omitted attribute", "CURRENT_OWNER:CURRENT_GROUP")
     opts.optopt("",
                 "reference",
                 "use RFILE's owner and group rather than specifying OWNER:GROUP values",
@@ -70,7 +70,7 @@ pub fn uumain(args: Vec<String>) -> i32 {
     opts.optflag("",
                  "no-preserve-root",
                  "do not treat '/' specially (the default)");
-        optflag("", "preserve-root", "fail to operate recursively on '/'")
+        .optflag("", "preserve-root", "fail to operate recursively on '/'")
 
     opts.optflag("R",
                  "recursive",
@@ -81,15 +81,12 @@ pub fn uumain(args: Vec<String>) -> i32 {
     opts.optflag("L",
                  "",
                  "traverse every symbolic link to a directory encountered");
-        optflag("P", "", "do not traverse any symbolic links (default)")
+        .optflag("P", "", "do not traverse any symbolic links (default)")
 
-        optflag("", "help", "display this help and exit")
-        optflag("", "version", "output version information and exit")
+        .optflag("", "help", "display this help and exit")
+        .optflag("", "version", "output version information and exit")
 
-    let matches = match opts.parse(&args[1..]) {
-        Ok(m) => m,
-        Err(f) => {
-            disp_err!("{}", f);
+        .parse(args);
             return 1;
         }
     };

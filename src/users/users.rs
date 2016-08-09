@@ -30,13 +30,10 @@ static VERSION: &'static str = env!("CARGO_PKG_VERSION");
 pub fn uumain(args: Vec<String>) -> i32 {
     let mut opts = uucore::coreopts::CoreOptions();
 
-        optflag("h", "help", "display this help and exit")
-        optflag("V", "version", "output version information and exit")
+        .optflag("h", "help", "display this help and exit")
+        .optflag("V", "version", "output version information and exit")
 
-    let matches = match opts.parse(&args[1..]) {
-        Ok(m) => m,
-        Err(f) => panic!("{}", f),
-    };
+        .parse(args);
 
     if matches.opt_present("help") {
         println!("{} {}", NAME, VERSION);

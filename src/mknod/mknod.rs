@@ -55,13 +55,10 @@ pub fn uumain(args: Vec<String>) -> i32 {
                 "set file permission bits to MODE, not a=rw - umask",
                 "MODE");
 
-        optflag("", "help", "display this help and exit")
-        optflag("", "version", "output version information and exit")
+        .optflag("", "help", "display this help and exit")
+        .optflag("", "version", "output version information and exit")
 
-    let matches = match opts.parse(&args[1..]) {
-        Ok(m) => m,
-        Err(f) => crash!(1, "{}\nTry '{} --help' for more information.", f, NAME),
-    };
+        .parse(args);
 
     if matches.opt_present("help") {
         println!(

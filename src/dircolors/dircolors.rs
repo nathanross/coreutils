@@ -55,21 +55,18 @@ pub fn guess_syntax() -> OutputFmt {
 pub fn uumain(args: Vec<String>) -> i32 {
     let mut opts = uucore::coreopts::CoreOptions();
 
-        optflag("b", "sh", "output Bourne shell code to set LS_COLORS")
+        .optflag("b", "sh", "output Bourne shell code to set LS_COLORS")
     opts.optflag("",
                  "bourne-shell",
                  "output Bourne shell code to set LS_COLORS");
-        optflag("c", "csh", "output C shell code to set LS_COLORS")
-        optflag("", "c-shell", "output C shell code to set LS_COLORS")
-        optflag("p", "print-database", "print the byte counts")
+        .optflag("c", "csh", "output C shell code to set LS_COLORS")
+        .optflag("", "c-shell", "output C shell code to set LS_COLORS")
+        .optflag("p", "print-database", "print the byte counts")
 
-        optflag("h", "help", "display this help and exit")
-        optflag("", "version", "output version information and exit")
+        .optflag("h", "help", "display this help and exit")
+        .optflag("", "version", "output version information and exit")
 
-    let matches = match opts.parse(&args[1..]) {
-        Ok(m) => m,
-        Err(f) => {
-            disp_err!("{}", f);
+        .parse(args);
             return 1;
         }
     };

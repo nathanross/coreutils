@@ -38,17 +38,14 @@ static POSIX_NAME_MAX: usize = 14;
 pub fn uumain(args: Vec<String>) -> i32 {
     // add options
     let mut opts = uucore::coreopts::CoreOptions();
-        optflag("p", "posix", "check for (most) POSIX systems")
+        .optflag("p", "posix", "check for (most) POSIX systems")
     opts.optflag("P",
         "posix-special", "check for empty names and leading \"-\"");
     opts.optflag("",
         "portability", "check for all POSIX systems (equivalent to -p -P)");
-        optflag("h", "help", "display this help text and exit")
-        optflag("V", "version", "output version information and exit")
-    let matches = match opts.parse(&args[1..]) {
-        Ok(m) => m,
-        Err(e) => { crash!(1, "{}", e) }
-    };
+        .optflag("h", "help", "display this help text and exit")
+        .optflag("V", "version", "output version information and exit")
+        .parse(args);
 
     // set working mode
     let mode = if matches.opt_present("version") {

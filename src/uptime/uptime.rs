@@ -39,13 +39,10 @@ extern {
 pub fn uumain(args: Vec<String>) -> i32 {
     let mut opts = uucore::coreopts::CoreOptions();
 
-        optflag("v", "version", "output version information and exit")
-        optflag("h", "help", "display this help and exit")
+        .optflag("v", "version", "output version information and exit")
+        .optflag("h", "help", "display this help and exit")
 
-    let matches = match opts.parse(&args[1..]) {
-        Ok(m) => m,
-        Err(f) => crash!(1, "Invalid options\n{}", f)
-    };
+        .parse(args);
     if matches.opt_present("version") {
         println!("{} {}", NAME, VERSION);
         return 0;

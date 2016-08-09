@@ -50,27 +50,24 @@ pub enum BackupMode {
 pub fn uumain(args: Vec<String>) -> i32 {
     let mut opts = uucore::coreopts::CoreOptions();
 
-        optflag("b", "", "make a backup of each file that would otherwise be overwritten or removed")
-        optflagopt("", "backup", "make a backup of each file that would otherwise be overwritten or removed", "METHOD")
+        .optflag("b", "", "make a backup of each file that would otherwise be overwritten or removed")
+        .optflagopt("", "backup", "make a backup of each file that would otherwise be overwritten or removed", "METHOD")
     // TODO:     optflag("d", "directory", "allow users with appropriate privileges to attempt to make hard links to directories")
-        optflag("f", "force", "remove existing destination files")
-        optflag("i", "interactive", "prompt whether to remove existing destination files")
+        .optflag("f", "force", "remove existing destination files")
+        .optflag("i", "interactive", "prompt whether to remove existing destination files")
     // TODO:     optflag("L", "logical", "dereference TARGETs that are symbolic links")
     // TODO:     optflag("n", "no-dereference", "treat LINK_NAME as a normal file if it is a symbolic link to a directory")
     // TODO:     optflag("P", "physical", "make hard links directly to symbolic links")
     // TODO:     optflag("r", "relative", "create symbolic links relative to link location")
-        optflag("s", "symbolic", "make symbolic links instead of hard links")
-        optopt("S", "suffix", "override the usual backup suffix", "SUFFIX")
-        optopt("t", "target-directory", "specify the DIRECTORY in which to create the links", "DIRECTORY")
-        optflag("T", "no-target-directory", "treat LINK_NAME as a normal file always")
-        optflag("v", "verbose", "print name of each linked file")
-        optflag("h", "help", "display this help and exit")
-        optflag("V", "version", "output version information and exit")
+        .optflag("s", "symbolic", "make symbolic links instead of hard links")
+        .optopt("S", "suffix", "override the usual backup suffix", "SUFFIX")
+        .optopt("t", "target-directory", "specify the DIRECTORY in which to create the links", "DIRECTORY")
+        .optflag("T", "no-target-directory", "treat LINK_NAME as a normal file always")
+        .optflag("v", "verbose", "print name of each linked file")
+        .optflag("h", "help", "display this help and exit")
+        .optflag("V", "version", "output version information and exit")
 
-    let matches = match opts.parse(&args[1..]) {
-        Ok(m) => m,
-        Err(e) => crash!(1, "{}", e),
-    };
+        .parse(args);
 
     let overwrite_mode = if matches.opt_present("force") {
         OverwriteMode::Force

@@ -25,19 +25,16 @@ static VERSION: &'static str = env!("CARGO_PKG_VERSION");
 pub fn uumain(args: Vec<String>) -> i32 {
     let mut opts = uucore::coreopts::CoreOptions();
 
-        optopt("a", "suffix-length", "use suffixes of length N (default 2)", "N")
-        optopt("b", "bytes", "put SIZE bytes per output file", "SIZE")
-        optopt("C", "line-bytes", "put at most SIZE bytes of lines per output file", "SIZE")
-        optflag("d", "numeric-suffixes", "use numeric suffixes instead of alphabetic")
-        optopt("l", "lines", "put NUMBER lines per output file", "NUMBER")
-        optflag("", "verbose", "print a diagnostic just before each output file is opened")
-        optflag("h", "help", "display help and exit")
-        optflag("V", "version", "output version information and exit")
+        .optopt("a", "suffix-length", "use suffixes of length N (default 2)", "N")
+        .optopt("b", "bytes", "put SIZE bytes per output file", "SIZE")
+        .optopt("C", "line-bytes", "put at most SIZE bytes of lines per output file", "SIZE")
+        .optflag("d", "numeric-suffixes", "use numeric suffixes instead of alphabetic")
+        .optopt("l", "lines", "put NUMBER lines per output file", "NUMBER")
+        .optflag("", "verbose", "print a diagnostic just before each output file is opened")
+        .optflag("h", "help", "display help and exit")
+        .optflag("V", "version", "output version information and exit")
 
-    let matches = match opts.parse(&args[1..]) {
-        Ok(m) => m,
-        Err(f) => crash!(1, "{}", f)
-    };
+        .parse(args);
 
     if matches.opt_present("h") {
         let msg = format!("{0} {1}

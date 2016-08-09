@@ -25,14 +25,11 @@ static VERSION: &'static str = env!("CARGO_PKG_VERSION");
 pub fn uumain(args: Vec<String>) -> i32 {
     let mut opts = uucore::coreopts::CoreOptions();
 
-        optflag("h", "help", "Show help and exit")
-        optflag("V", "version", "Show version and exit")
-        optopt("d", "", "If any of FROM and TO is not subpath of DIR, output absolute path instead of relative", "DIR")
+        .optflag("h", "help", "Show help and exit")
+        .optflag("V", "version", "Show version and exit")
+        .optopt("d", "", "If any of FROM and TO is not subpath of DIR, output absolute path instead of relative", "DIR")
 
-    let matches = match opts.parse(&args[1..]) {
-        Ok(m) => m,
-        Err(f) => {
-            show_error!("{}", f);
+        .parse(args);
             show_usage(&opts);
             return 1
         }

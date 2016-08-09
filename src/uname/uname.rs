@@ -55,19 +55,16 @@ static VERSION: &'static str = env!("CARGO_PKG_VERSION");
 pub fn uumain(args: Vec<String>) -> i32 {
     let mut opts = uucore::coreopts::CoreOptions();
 
-        optflag("h", "help", "display this help and exit")
-        optflag("a", "all", "Behave as though all of the options -mnrsv were specified.")
-        optflag("m", "machine", "print the machine hardware name.")
-        optflag("n", "nodename", "print the nodename (the nodename may be a name that the system is known by to a communications network).")
-        optflag("p", "processor", "print the machine processor architecture name.")
-        optflag("r", "release", "print the operating system release.")
-        optflag("s", "sysname", "print the operating system name.")
-        optflag("v", "version", "print the operating system version.")
+        .optflag("h", "help", "display this help and exit")
+        .optflag("a", "all", "Behave as though all of the options -mnrsv were specified.")
+        .optflag("m", "machine", "print the machine hardware name.")
+        .optflag("n", "nodename", "print the nodename (the nodename may be a name that the system is known by to a communications network).")
+        .optflag("p", "processor", "print the machine processor architecture name.")
+        .optflag("r", "release", "print the operating system release.")
+        .optflag("s", "sysname", "print the operating system name.")
+        .optflag("v", "version", "print the operating system version.")
 
-    let matches = match opts.parse(&args[1..]) {
-        Ok(m) => m,
-        Err(f) => crash!(1, "{}", f),
-    };
+        .parse(args);
     if matches.opt_present("help") {
         println!("{} {}", NAME, VERSION);
         println!("");

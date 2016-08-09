@@ -23,15 +23,12 @@ static VERSION: &'static str = env!("CARGO_PKG_VERSION");
 pub fn uumain(args: Vec<String>) -> i32 {
     let mut opts = uucore::coreopts::CoreOptions();
 
-        optflag("", "all", "print the number of cores available to the system")
-        optopt("", "ignore", "ignore up to N cores", "N")
-        optflag("h", "help", "display this help and exit")
-        optflag("V", "version", "output version information and exit")
+        .optflag("", "all", "print the number of cores available to the system")
+        .optopt("", "ignore", "ignore up to N cores", "N")
+        .optflag("h", "help", "display this help and exit")
+        .optflag("V", "version", "output version information and exit")
 
-    let matches = match opts.parse(&args[1..]) {
-        Ok(m) => m,
-        Err(err) => {
-            show_error!("{}", err);
+        .parse(args);
             return 1;
         }
     };

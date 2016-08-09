@@ -36,17 +36,14 @@ static VERSION: &'static str = env!("CARGO_PKG_VERSION");
 pub fn uumain(args: Vec<String>) -> i32 {
     let mut opts = uucore::coreopts::CoreOptions();
 
-        optflag("c", "no-create", "do not create files that do not exist")
-        optflag("o", "io-blocks", "treat SIZE as the number of I/O blocks of the file rather than bytes (NOT IMPLEMENTED)")
-        optopt("r", "reference", "base the size of each file on the size of RFILE", "RFILE")
-        optopt("s", "size", "set or adjust the size of each file according to SIZE, which is in bytes unless --io-blocks is specified", "SIZE")
-        optflag("h", "help", "display this help and exit")
-        optflag("V", "version", "output version information and exit")
+        .optflag("c", "no-create", "do not create files that do not exist")
+        .optflag("o", "io-blocks", "treat SIZE as the number of I/O blocks of the file rather than bytes (NOT IMPLEMENTED)")
+        .optopt("r", "reference", "base the size of each file on the size of RFILE", "RFILE")
+        .optopt("s", "size", "set or adjust the size of each file according to SIZE, which is in bytes unless --io-blocks is specified", "SIZE")
+        .optflag("h", "help", "display this help and exit")
+        .optflag("V", "version", "output version information and exit")
 
-    let matches = match opts.parse(&args[1..]) {
-        Ok(m) => m,
-        Err(f) => { crash!(1, "{}", f) }
-    };
+        .parse(args);
 
     if matches.opt_present("help") {
         println!("{} {}", NAME, VERSION);

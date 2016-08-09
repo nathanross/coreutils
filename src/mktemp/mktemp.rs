@@ -34,24 +34,21 @@ static DEFAULT_TEMPLATE: &'static str = "tmp.XXXXXXXXXX";
 
 pub fn uumain(args: Vec<String>) -> i32 {
     let mut opts = uucore::coreopts::CoreOptions();
-        optflag("d", "directory", "Make a directory instead of a file")
+        .optflag("d", "directory", "Make a directory instead of a file")
     opts.optflag("u",
                  "dry-run",
                  "do not create anything; merely print a name (unsafe)");
-        optflag("q", "quiet", "Fail silently if an error occurs.")
-        optopt("", "suffix", "append SUFF to TEMPLATE; SUFF must not contain a path separator. This option is implied if TEMPLATE does not end with X.", "SUFF")
-        optopt("p", "tmpdir", "interpret TEMPLATE relative to DIR; if DIR is not specified, use $TMPDIR if set, else /tmp.  With this option, TEMPLATE  must  not  be  an  absolute name; unlike with -t, TEMPLATE may contain slashes, but mktemp creates only the final component", "DIR")
+        .optflag("q", "quiet", "Fail silently if an error occurs.")
+        .optopt("", "suffix", "append SUFF to TEMPLATE; SUFF must not contain a path separator. This option is implied if TEMPLATE does not end with X.", "SUFF")
+        .optopt("p", "tmpdir", "interpret TEMPLATE relative to DIR; if DIR is not specified, use $TMPDIR if set, else /tmp.  With this option, TEMPLATE  must  not  be  an  absolute name; unlike with -t, TEMPLATE may contain slashes, but mktemp creates only the final component", "DIR")
     // deprecated option of GNU coreutils
     //        optflag("t", "", "Generate a template (using the supplied prefix and TMPDIR if set) to create a filename template")
-        optflag("", "help", "Print this help and exit")
-        optflag("", "version", "print the version and exit")
+        .optflag("", "help", "Print this help and exit")
+        .optflag("", "version", "print the version and exit")
 
 
     // >> early return options
-    let matches = match opts.parse(&args[1..]) {
-        Ok(m) => m,
-        Err(f) => crash!(1, "Invalid options\n{}", f),
-    };
+        .parse(args);
 
     if matches.opt_present("help") {
         print_help(&opts);
