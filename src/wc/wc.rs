@@ -14,7 +14,6 @@ extern crate libc;
 #[macro_use]
 extern crate uucore;
 
-use getopts::{Matches, Options};
 use std::ascii::AsciiExt;
 use std::fs::File;
 use std::io::{stdin, BufRead, BufReader, Read, Write};

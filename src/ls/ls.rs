@@ -28,7 +28,6 @@ extern crate libc;
 use self::libc::{S_ISUID, S_ISGID, S_ISVTX, S_IRUSR, S_IWUSR, S_IXUSR, S_IRGRP, S_IWGRP, S_IXGRP,
                  S_IROTH, S_IWOTH, S_IXOTH, mode_t, c_char};
 
-use getopts::Options;
 use std::fs;
 use std::fs::{DirEntry, FileType, Metadata};
 use std::path::{Path, PathBuf};

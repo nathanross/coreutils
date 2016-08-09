@@ -10,7 +10,6 @@
  */
 
 
-use getopts::Options;
 use std::cmp::Ordering;
 use std::fs::File;
 use std::io::{self, BufRead, BufReader, stdin, Stdin};

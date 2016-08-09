@@ -17,7 +17,6 @@ extern crate regex;
 #[macro_use]
 extern crate uucore;
 
-use getopts::{Options, Matches};
 use regex::Regex;
 use std::cmp;
 use std::collections::{HashMap, HashSet, BTreeSet};

@@ -13,7 +13,6 @@
 #[macro_use]
 extern crate uucore;
 
-use getopts::Options;
 use std::fs;
 use std::io::{ErrorKind, Result, Write};
 use std::path::Path;

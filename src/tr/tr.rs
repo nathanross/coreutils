@@ -18,7 +18,6 @@ extern crate vec_map;
 extern crate uucore;
 
 use bit_set::BitSet;
-use getopts::Options;
 use std::io::{stdin, stdout, BufReader, BufWriter, Read, Write};
 use vec_map::VecMap;
 

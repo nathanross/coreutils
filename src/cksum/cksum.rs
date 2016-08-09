@@ -13,7 +13,6 @@
 #[macro_use]
 extern crate uucore;
 
-use getopts::Options;
 use std::fs::File;
 use std::io::{self, stdin, Read, Write, BufReader};
 #[cfg(not(windows))]

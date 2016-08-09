@@ -17,7 +17,6 @@ use libc::{uid_t, gid_t, c_char, c_int};
 #[macro_use]
 extern crate uucore;
 
-use getopts::Options;
 
 extern crate walkdir;
 use walkdir::WalkDir;

@@ -16,7 +16,6 @@ extern crate libc;
 #[macro_use]
 extern crate uucore;
 
-use getopts::Options;
 use std::fs::File;
 use std::intrinsics::{copy_nonoverlapping};
 use std::io::{stdout, stdin, stderr, Write, Read, Result};

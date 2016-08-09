@@ -8,7 +8,6 @@
 // that was distributed with this source code.
 //
 
-use getopts::Options;
 
 #[macro_use]
 mod fsext;

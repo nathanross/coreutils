@@ -14,7 +14,6 @@ extern crate glob;
 #[macro_use]
 extern crate uucore;
 
-use getopts::Options;
 
 use std::fs::File;
 use std::io::{BufRead, BufReader, Write};

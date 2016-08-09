@@ -19,7 +19,6 @@ extern crate libc;
 #[macro_use]
 extern crate uucore;
 
-use getopts::Options;
 use std::ffi::{CStr, CString};
 use std::mem;
 use std::ptr;

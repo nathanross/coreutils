@@ -14,7 +14,6 @@
 #[macro_use]
 extern crate uucore;
 
-use getopts::{Matches, Options};
 use std::fs::File;
 use std::io::{BufRead, BufReader, BufWriter, Read, stdin, stdout, Write};
 use std::path::Path;

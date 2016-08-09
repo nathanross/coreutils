@@ -97,7 +97,6 @@ pub fn uumain(args: Vec<String>) -> i32 {
     } else {
         &inputs[..]
     };
-    // Gather up format flags, we don't use getopts becase we need keep them in order.
     let flags = args[1..]
         .iter()
         .filter_map(|w| match w as &str {

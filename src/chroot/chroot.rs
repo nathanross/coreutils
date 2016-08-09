@@ -14,7 +14,6 @@ extern crate libc;
 #[macro_use]
 extern crate uucore;
 
-use getopts::Options;
 use libc::{setgid, setuid};
 use std::ffi::CString;
 use std::io::{Error, Write};

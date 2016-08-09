@@ -15,7 +15,6 @@ extern crate walker;
 #[macro_use]
 extern crate uucore;
 
-use getopts::Options;
 use std::error::Error;
 use std::ffi::CString;
 use std::io::{self, Write};

@@ -18,7 +18,6 @@ extern crate libc;
 #[macro_use]
 extern crate uucore;
 
-use getopts::Options;
 use std::collections::hash_set::HashSet;
 use std::iter::repeat;
 use std::str;

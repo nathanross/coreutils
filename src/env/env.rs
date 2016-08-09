@@ -56,7 +56,6 @@ fn print_env(null: bool) {
 }
 
 pub fn uumain(args: Vec<String>) -> i32 {
-    // to handle arguments the same way than GNU env, we can't use getopts
     let mut opts = Box::new(options {
         ignore_env: false,
         null: false,

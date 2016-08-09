@@ -13,7 +13,6 @@
 extern crate uucore;
 use uucore::encoding::{Data, Format, wrap_print};
 
-use getopts::Options;
 use std::fs::File;
 use std::io::{BufReader, Read, stdin, Write};
 use std::path::Path;

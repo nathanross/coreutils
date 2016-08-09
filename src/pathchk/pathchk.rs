@@ -15,7 +15,6 @@ extern crate libc;
 #[macro_use]
 extern crate uucore;
 
-use getopts::Options;
 use std::fs;
 use std::io::{Write, ErrorKind};
 

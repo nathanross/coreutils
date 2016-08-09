@@ -17,7 +17,6 @@ extern crate time as rtime;
 #[macro_use]
 extern crate uucore;
 
-use getopts::Options;
 use libc::{time_t, c_double};
 use std::ffi::CString;
 use std::fs::File;
