@@ -8,7 +8,6 @@ name = "uu_shuf"
 path = "shuf.rs"
 
 [dependencies]
-getopts = "*"
 libc = "*"
 rand = "*"
 uucore = { path="../uucore" }

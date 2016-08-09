@@ -8,7 +8,6 @@ name = "uu_uptime"
 path = "uptime.rs"
 
 [dependencies]
-getopts = "*"
 libc = { git = "https://github.com/rust-lang/libc.git" }
 time = "*"
 uucore = { path="../uucore" }

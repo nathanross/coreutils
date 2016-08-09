@@ -8,7 +8,6 @@ name = "uu_tr"
 path = "tr.rs"
 
 [dependencies]
-getopts = "*"
 libc = "*"
 bit-set = "*"
 vec_map = "0.6.0"

@@ -8,7 +8,6 @@ name = "uu_nice"
 path = "nice.rs"
 
 [dependencies]
-getopts = "*"
 libc = "*"
 uucore = { path="../uucore" }
 

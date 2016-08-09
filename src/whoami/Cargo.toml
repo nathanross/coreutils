@@ -8,7 +8,6 @@ name = "uu_whoami"
 path = "whoami.rs"
 
 [dependencies]
-getopts = "*"
 libc = "*"
 winapi = "*"
 advapi32-sys = "*"

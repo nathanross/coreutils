@@ -10,7 +10,6 @@ path = "shred.rs"
 [dependencies]
 rand = "0.3"
 filetime = "*"
-getopts = "*"
 libc = "*"
 time = "*"
 uucore = { path="../uucore" }

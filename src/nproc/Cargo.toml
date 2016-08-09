@@ -8,7 +8,6 @@ name = "uu_nproc"
 path = "nproc.rs"
 
 [dependencies]
-getopts = "*"
 libc = "*"
 num_cpus = "*"
 uucore = { path="../uucore" }

@@ -8,7 +8,6 @@ name = "uu_comm"
 path = "comm.rs"
 
 [dependencies]
-getopts = "*"
 libc = "*"
 
 [[bin]]

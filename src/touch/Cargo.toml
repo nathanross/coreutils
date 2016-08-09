@@ -9,7 +9,6 @@ path = "touch.rs"
 
 [dependencies]
 filetime = "*"
-getopts = "*"
 libc = "*"
 time = "*"
 uucore = { path="../uucore" }

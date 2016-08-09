@@ -8,7 +8,6 @@ name = "uu_chown"
 path = "chown.rs"
 
 [dependencies]
-getopts = "*"
 glob = "*"
 libc = "*"
 uucore = { path="../uucore" }

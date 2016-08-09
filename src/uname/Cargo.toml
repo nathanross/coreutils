@@ -8,7 +8,6 @@ name = "uu_uname"
 path = "uname.rs"
 
 [dependencies]
-getopts = "*"
 libc = "*"
 uucore = { path="../uucore" }
 

@@ -8,7 +8,6 @@ name = "uu_ls"
 path = "ls.rs"
 
 [dependencies]
-getopts = "*"
 libc = "*"
 uucore = { path="../uucore" }
 pretty-bytes = "0.1.0"

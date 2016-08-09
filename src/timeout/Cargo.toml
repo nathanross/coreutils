@@ -8,7 +8,6 @@ name = "uu_timeout"
 path = "timeout.rs"
 
 [dependencies]
-getopts = "*"
 libc = "*"
 time = "*"
 uucore = { path="../uucore" }

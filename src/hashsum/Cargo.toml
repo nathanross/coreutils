@@ -8,7 +8,6 @@ name = "uu_hashsum"
 path = "hashsum.rs"
 
 [dependencies]
-getopts = "*"
 libc = "*"
 regex = "*"
 regex-syntax = "*"

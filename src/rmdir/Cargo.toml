@@ -8,7 +8,6 @@ name = "uu_rmdir"
 path = "rmdir.rs"
 
 [dependencies]
-getopts = "*"
 libc = "*"
 uucore = { path="../uucore" }
 

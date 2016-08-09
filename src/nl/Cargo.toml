@@ -8,7 +8,6 @@ name = "uu_nl"
 path = "nl.rs"
 
 [dependencies]
-getopts = "*"
 libc = "*"
 aho-corasick = "*"
 memchr = "*"
