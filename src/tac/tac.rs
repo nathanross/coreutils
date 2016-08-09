@@ -23,11 +23,11 @@ static VERSION: &'static str = env!("CARGO_PKG_VERSION");
 pub fn uumain(args: Vec<String>) -> i32 {
     let mut opts = uucore::coreopts::CoreOptions();
 
-    opts.optflag("b", "before", "attach the separator before instead of after");
-    opts.optflag("r", "regex", "interpret the sequence as a regular expression (NOT IMPLEMENTED)");
-    opts.optopt("s", "separator", "use STRING as the separator instead of newline", "STRING");
-    opts.optflag("h", "help", "display this help and exit");
-    opts.optflag("V", "version", "output version information and exit");
+        optflag("b", "before", "attach the separator before instead of after")
+        optflag("r", "regex", "interpret the sequence as a regular expression (NOT IMPLEMENTED)")
+        optopt("s", "separator", "use STRING as the separator instead of newline", "STRING")
+        optflag("h", "help", "display this help and exit")
+        optflag("V", "version", "output version information and exit")
 
     let matches = match opts.parse(&args[1..]) {
         Ok(m) => m,

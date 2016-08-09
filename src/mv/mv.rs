@@ -51,22 +51,22 @@ pub enum BackupMode {
 pub fn uumain(args: Vec<String>) -> i32 {
     let mut opts = uucore::coreopts::CoreOptions();
 
-    opts.optflagopt("",  "backup", "make a backup of each existing destination file", "CONTROL");
-    opts.optflag("b", "", "like --backup but does not accept an argument");
-    opts.optflag("f", "force", "do not prompt before overwriting");
-    opts.optflag("i", "interactive", "prompt before override");
-    opts.optflag("n", "no-clobber", "do not overwrite an existing file");
+        optflagopt("",  "backup", "make a backup of each existing destination file", "CONTROL")
+        optflag("b", "", "like --backup but does not accept an argument")
+        optflag("f", "force", "do not prompt before overwriting")
+        optflag("i", "interactive", "prompt before override")
+        optflag("n", "no-clobber", "do not overwrite an existing file")
     opts.optflag("",  "strip-trailing-slashes", "remove any trailing slashes from each SOURCE\n \
                                                  argument");
-    opts.optopt("S", "suffix", "override the usual backup suffix", "SUFFIX");
-    opts.optopt("t", "target-directory", "move all SOURCE arguments into DIRECTORY", "DIRECTORY");
-    opts.optflag("T", "no-target-directory", "treat DEST as a normal file");
+        optopt("S", "suffix", "override the usual backup suffix", "SUFFIX")
+        optopt("t", "target-directory", "move all SOURCE arguments into DIRECTORY", "DIRECTORY")
+        optflag("T", "no-target-directory", "treat DEST as a normal file")
     opts.optflag("u", "update", "move only when the SOURCE file is newer\n \
                                 than the destination file or when the\n \
                                 destination file is missing");
-    opts.optflag("v", "verbose", "explain what is being done");
-    opts.optflag("h", "help", "display this help and exit");
-    opts.optflag("V", "version", "output version information and exit");
+        optflag("v", "verbose", "explain what is being done")
+        optflag("h", "help", "display this help and exit")
+        optflag("V", "version", "output version information and exit")
 
     let matches = match opts.parse(&args[1..]) {
         Ok(m) => m,

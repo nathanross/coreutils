@@ -45,19 +45,19 @@ macro_rules! local_tm_to_filetime(
 pub fn uumain(args: Vec<String>) -> i32 {
     let mut opts = uucore::coreopts::CoreOptions();
 
-    opts.optflag("a", "",               "change only the access time");
-    opts.optflag("c", "no-create",      "do not create any files");
-    opts.optopt( "d", "date",           "parse argument and use it instead of current time", "STRING");
+        optflag("a", "",               "change only the access time")
+        optflag("c", "no-create",      "do not create any files")
+        optopt( "d", "date",           "parse argument and use it instead of current time", "STRING")
     opts.optflag("h", "no-dereference", "affect each symbolic link instead of any referenced file \
                                          (only for systems that can change the timestamps of a symlink)");
-    opts.optflag("m", "",               "change only the modification time");
-    opts.optopt( "r", "reference",      "use this file's times instead of the current time", "FILE");
-    opts.optopt( "t", "",               "use [[CC]YY]MMDDhhmm[.ss] instead of the current time", "STAMP");
+        optflag("m", "",               "change only the modification time")
+        optopt( "r", "reference",      "use this file's times instead of the current time", "FILE")
+        optopt( "t", "",               "use [[CC]YY]MMDDhhmm[.ss] instead of the current time", "STAMP")
     opts.optopt( "",  "time",           "change only the specified time: \"access\", \"atime\", or \
                                          \"use\" are equivalent to -a; \"modify\" or \"mtime\" are \
                                          equivalent to -m", "WORD");
-    opts.optflag("h", "help",           "display this help and exit");
-    opts.optflag("V", "version",        "output version information and exit");
+        optflag("h", "help",           "display this help and exit")
+        optflag("V", "version",        "output version information and exit")
 
     let matches = match opts.parse(&args[1..]) {
         Ok(m)  => m,

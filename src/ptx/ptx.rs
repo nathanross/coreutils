@@ -507,17 +507,17 @@ pub fn uumain(args: Vec<String>) -> i32 {
     let mut opts = uucore::coreopts::CoreOptions();
     opts.optflag("A", "auto-reference",
         "output automatically generated references");
-    opts.optflag("G", "traditional", "behave more like System V 'ptx'");
+        optflag("G", "traditional", "behave more like System V 'ptx'")
     opts.optopt("F", "flag-truncation",
         "use STRING for flagging line truncations", "STRING");
     opts.optopt("M", "macro-name", "macro name to use instead of 'xx'",
         "STRING");
-    opts.optflag("O", "format=roff", "generate output as roff directives");
+        optflag("O", "format=roff", "generate output as roff directives")
     opts.optflag("R", "right-side-refs",
         "put references at right, not counted in -w");
     opts.optopt("S", "sentence-regexp", "for end of lines or end of sentences",
         "REGEXP");
-    opts.optflag("T", "format=tex", "generate output as TeX directives");
+        optflag("T", "format=tex", "generate output as TeX directives")
     opts.optopt("W", "word-regexp", "use REGEXP to match each keyword",
         "REGEXP");
     opts.optopt("b", "break-file", "word break characters in this FILE",
@@ -526,14 +526,14 @@ pub fn uumain(args: Vec<String>) -> i32 {
         "fold lower case to upper case for sorting");
     opts.optopt("g", "gap-size", "gap size in columns between output fields",
         "NUMBER");
-    opts.optopt("i", "ignore-file", "read ignore word list from FILE", "FILE");
+        optopt("i", "ignore-file", "read ignore word list from FILE", "FILE")
     opts.optopt("o", "only-file", "read only word list from this FILE",
         "FILE");
-    opts.optflag("r", "references", "first field of each line is a reference");
+        optflag("r", "references", "first field of each line is a reference")
     opts.optopt("w", "width", "output width in columns, reference excluded",
         "NUMBER");
-    opts.optflag("", "help", "display this help and exit");
-    opts.optflag("", "version", "output version information and exit");
+        optflag("", "help", "display this help and exit")
+        optflag("", "version", "output version information and exit")
 
     let matches = return_if_err!(1, opts.parse(&args[1..]));
 

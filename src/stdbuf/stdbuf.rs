@@ -212,11 +212,11 @@ fn get_preload_env() -> (String, String) {
 pub fn uumain(args: Vec<String>) -> i32 {
     let mut opts = uucore::coreopts::CoreOptions();
 
-    opts.optopt("i", "input", "adjust standard input stream buffering", "MODE");
-    opts.optopt("o", "output", "adjust standard output stream buffering", "MODE");
-    opts.optopt("e", "error", "adjust standard error stream buffering", "MODE");
-    opts.optflag("", "help", "display this help and exit");
-    opts.optflag("", "version", "output version information and exit");
+        optopt("i", "input", "adjust standard input stream buffering", "MODE")
+        optopt("o", "output", "adjust standard output stream buffering", "MODE")
+        optopt("e", "error", "adjust standard error stream buffering", "MODE")
+        optflag("", "help", "display this help and exit")
+        optflag("", "version", "output version information and exit")
 
     let mut options = ProgramOptions {stdin: BufferType::Default, stdout: BufferType::Default, stderr: BufferType::Default};
     let mut command_idx: i32 = -1;

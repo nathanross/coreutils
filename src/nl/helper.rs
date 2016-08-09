@@ -24,7 +24,7 @@ fn parse_style(chars: &[char]) -> Result<::NumberingStyle, String> {
 pub fn parse_options(settings: &mut ::Settings, opts: &getopts::Matches) -> Vec<String> {
     // This vector holds error messages encountered.
     let mut errs: Vec<String> = vec![];
-    settings.renumber = !opts.opt_present("p");
+    settings.renumber = !    opt_present("p")
     match opts.opt_str("s") {
         None => {},
         Some(val) => { settings.number_separator = val; }

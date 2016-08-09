@@ -48,15 +48,15 @@ pub fn uumain(args: Vec<String>) -> i32 {
     let mut opts = uucore::coreopts::CoreOptions();
 
     // Linux-specific options, not implemented
-    // opts.optflag("Z", "", "set the SELinux security context to default type");
-    // opts.optopt("", "context", "like -Z, or if CTX is specified then set the SELinux or SMACK security context to CTX");
+    //     optflag("Z", "", "set the SELinux security context to default type")
+    //     optopt("", "context", "like -Z, or if CTX is specified then set the SELinux or SMACK security context to CTX")
     opts.optopt("m",
                 "mode",
                 "set file permission bits to MODE, not a=rw - umask",
                 "MODE");
 
-    opts.optflag("", "help", "display this help and exit");
-    opts.optflag("", "version", "output version information and exit");
+        optflag("", "help", "display this help and exit")
+        optflag("", "version", "output version information and exit")
 
     let matches = match opts.parse(&args[1..]) {
         Ok(m) => m,

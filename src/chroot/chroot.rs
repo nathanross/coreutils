@@ -42,14 +42,14 @@ static VERSION: &'static str = env!("CARGO_PKG_VERSION");
 pub fn uumain(args: Vec<String>) -> i32 {
     let mut opts = uucore::coreopts::CoreOptions();
 
-    opts.optopt("u", "user", "User (ID or name) to switch before running the program", "USER");
-    opts.optopt("g", "group", "Group (ID or name) to switch to", "GROUP");
-    opts.optopt("G", "groups", "Comma-separated list of groups to switch to", "GROUP1,GROUP2...");
+        optopt("u", "user", "User (ID or name) to switch before running the program", "USER")
+        optopt("g", "group", "Group (ID or name) to switch to", "GROUP")
+        optopt("G", "groups", "Comma-separated list of groups to switch to", "GROUP1,GROUP2...")
     opts.optopt("", "userspec", "Colon-separated user and group to switch to. \
         Same as -u USER -g GROUP. \
         Userspec has higher preference than -u and/or -g", "USER:GROUP");
-    opts.optflag("h", "help", "Show help");
-    opts.optflag("V", "version", "Show program's version");
+        optflag("h", "help", "Show help")
+        optflag("V", "version", "Show program's version")
 
     let matches = match opts.parse(&args[1..]) {
         Ok(m) => m,

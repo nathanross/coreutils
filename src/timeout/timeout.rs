@@ -29,12 +29,12 @@ pub fn uumain(args: Vec<String>) -> i32 {
     let program = args[0].clone();
 
     let mut opts = uucore::coreopts::CoreOptions();
-    opts.optflag("", "preserve-status", "exit with the same status as COMMAND, even when the command times out");
-    opts.optflag("", "foreground", "when not running timeout directly from a shell prompt, allow COMMAND to read from the TTY and get TTY signals; in this mode, children of COMMAND will not be timed out");
-    opts.optopt("k", "kill-after", "also send a KILL signal if COMMAND is still running this long after the initial signal was sent", "DURATION");
-    opts.optflag("s", "signal", "specify the signal to be sent on timeout; SIGNAL may be a name like 'HUP' or a number; see 'kill -l' for a list of signals");
-    opts.optflag("h", "help", "display this help and exit");
-    opts.optflag("V", "version", "output version information and exit");
+        optflag("", "preserve-status", "exit with the same status as COMMAND, even when the command times out")
+        optflag("", "foreground", "when not running timeout directly from a shell prompt, allow COMMAND to read from the TTY and get TTY signals; in this mode, children of COMMAND will not be timed out")
+        optopt("k", "kill-after", "also send a KILL signal if COMMAND is still running this long after the initial signal was sent", "DURATION")
+        optflag("s", "signal", "specify the signal to be sent on timeout; SIGNAL may be a name like 'HUP' or a number; see 'kill -l' for a list of signals")
+        optflag("h", "help", "display this help and exit")
+        optflag("V", "version", "output version information and exit")
     let matches = match opts.parse(&args[1..]) {
         Ok(m) => m,
         Err(f) => {

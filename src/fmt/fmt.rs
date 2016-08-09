@@ -59,27 +59,27 @@ pub struct FmtOptions {
 pub fn uumain(args: Vec<String>) -> i32 {
     let mut opts = uucore::coreopts::CoreOptions();
 
-    opts.optflag("c", "crown-margin", "First and second line of paragraph may have different indentations, in which case the first line's indentation is preserved, and each subsequent line's indentation matches the second line.");
-    opts.optflag("t", "tagged-paragraph", "Like -c, except that the first and second line of a paragraph *must* have different indentation or they are treated as separate paragraphs.");
-    opts.optflag("m", "preserve-headers", "Attempt to detect and preserve mail headers in the input. Be careful when combining this flag with -p.");
-    opts.optflag("s", "split-only", "Split lines only, do not reflow.");
-    opts.optflag("u", "uniform-spacing", "Insert exactly one space between words, and two between sentences. Sentence breaks in the input are detected as [?!.] followed by two spaces or a newline; other punctuation is not interpreted as a sentence break.");
+        optflag("c", "crown-margin", "First and second line of paragraph may have different indentations, in which case the first line's indentation is preserved, and each subsequent line's indentation matches the second line.")
+        optflag("t", "tagged-paragraph", "Like -c, except that the first and second line of a paragraph *must* have different indentation or they are treated as separate paragraphs.")
+        optflag("m", "preserve-headers", "Attempt to detect and preserve mail headers in the input. Be careful when combining this flag with -p.")
+        optflag("s", "split-only", "Split lines only, do not reflow.")
+        optflag("u", "uniform-spacing", "Insert exactly one space between words, and two between sentences. Sentence breaks in the input are detected as [?!.] followed by two spaces or a newline; other punctuation is not interpreted as a sentence break.")
 
-    opts.optopt("p", "prefix", "Reformat only lines beginning with PREFIX, reattaching PREFIX to reformatted lines. Unless -x is specified, leading whitespace will be ignored when matching PREFIX.", "PREFIX");
-    opts.optopt("P", "skip-prefix", "Do not reformat lines beginning with PSKIP. Unless -X is specified, leading whitespace will be ignored when matching PSKIP", "PSKIP");
+        optopt("p", "prefix", "Reformat only lines beginning with PREFIX, reattaching PREFIX to reformatted lines. Unless -x is specified, leading whitespace will be ignored when matching PREFIX.", "PREFIX")
+        optopt("P", "skip-prefix", "Do not reformat lines beginning with PSKIP. Unless -X is specified, leading whitespace will be ignored when matching PSKIP", "PSKIP")
 
-    opts.optflag("x", "exact-prefix", "PREFIX must match at the beginning of the line with no preceding whitespace.");
-    opts.optflag("X", "exact-skip-prefix", "PSKIP must match at the beginning of the line with no preceding whitespace.");
+        optflag("x", "exact-prefix", "PREFIX must match at the beginning of the line with no preceding whitespace.")
+        optflag("X", "exact-skip-prefix", "PSKIP must match at the beginning of the line with no preceding whitespace.")
 
-    opts.optopt("w", "width", "Fill output lines up to a maximum of WIDTH columns, default 79.", "WIDTH");
-    opts.optopt("g", "goal", "Goal width, default ~0.94*WIDTH. Must be less than WIDTH.", "GOAL");
+        optopt("w", "width", "Fill output lines up to a maximum of WIDTH columns, default 79.", "WIDTH")
+        optopt("g", "goal", "Goal width, default ~0.94*WIDTH. Must be less than WIDTH.", "GOAL")
 
-    opts.optflag("q", "quick", "Break lines more quickly at the expense of a potentially more ragged appearance.");
+        optflag("q", "quick", "Break lines more quickly at the expense of a potentially more ragged appearance.")
 
-    opts.optopt("T", "tab-width", "Treat tabs as TABWIDTH spaces for determining line length, default 8. Note that this is used only for calculating line lengths; tabs are preserved in the output.", "TABWIDTH");
+        optopt("T", "tab-width", "Treat tabs as TABWIDTH spaces for determining line length, default 8. Note that this is used only for calculating line lengths; tabs are preserved in the output.", "TABWIDTH")
 
-    opts.optflag("V", "version", "Output version information and exit.");
-    opts.optflag("h", "help", "Display this help message and exit.");
+        optflag("V", "version", "Output version information and exit.")
+        optflag("h", "help", "Display this help message and exit.")
 
     let matches = match opts.parse(&args[1..]) {
         Ok(m) => m,

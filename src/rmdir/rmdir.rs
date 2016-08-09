@@ -24,11 +24,11 @@ static VERSION: &'static str = env!("CARGO_PKG_VERSION");
 pub fn uumain(args: Vec<String>) -> i32 {
     let mut opts = uucore::coreopts::CoreOptions();
 
-    opts.optflag("", "ignore-fail-on-non-empty", "ignore each failure that is solely because a directory is non-empty");
-    opts.optflag("p", "parents", "remove DIRECTORY and its ancestors; e.g., 'rmdir -p a/b/c' is similar to rmdir a/b/c a/b a");
-    opts.optflag("v", "verbose", "output a diagnostic for every directory processed");
-    opts.optflag("h", "help", "print this help and exit");
-    opts.optflag("V", "version", "output version information and exit");
+        optflag("", "ignore-fail-on-non-empty", "ignore each failure that is solely because a directory is non-empty")
+        optflag("p", "parents", "remove DIRECTORY and its ancestors; e.g., 'rmdir -p a/b/c' is similar to rmdir a/b/c a/b a")
+        optflag("v", "verbose", "output a diagnostic for every directory processed")
+        optflag("h", "help", "print this help and exit")
+        optflag("V", "version", "output version information and exit")
 
     let matches = match opts.parse(&args[1..]) {
         Ok(m) => m,

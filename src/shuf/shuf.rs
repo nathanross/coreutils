@@ -31,15 +31,15 @@ static VERSION: &'static str = env!("CARGO_PKG_VERSION");
 
 pub fn uumain(args: Vec<String>) -> i32 {
     let mut opts = uucore::coreopts::CoreOptions();
-    opts.optflag("e", "echo", "treat each ARG as an input line");
-    opts.optopt("i", "input-range", "treat each number LO through HI as an input line", "LO-HI");
-    opts.optopt("n", "head-count", "output at most COUNT lines", "COUNT");
-    opts.optopt("o", "output", "write result to FILE instead of standard output", "FILE");
-    opts.optopt("", "random-source", "get random bytes from FILE", "FILE");
-    opts.optflag("r", "repeat", "output lines can be repeated");
-    opts.optflag("z", "zero-terminated", "end lines with 0 byte, not newline");
-    opts.optflag("h", "help", "display this help and exit");
-    opts.optflag("V", "version", "output version information and exit");
+        optflag("e", "echo", "treat each ARG as an input line")
+        optopt("i", "input-range", "treat each number LO through HI as an input line", "LO-HI")
+        optopt("n", "head-count", "output at most COUNT lines", "COUNT")
+        optopt("o", "output", "write result to FILE instead of standard output", "FILE")
+        optopt("", "random-source", "get random bytes from FILE", "FILE")
+        optflag("r", "repeat", "output lines can be repeated")
+        optflag("z", "zero-terminated", "end lines with 0 byte, not newline")
+        optflag("h", "help", "display this help and exit")
+        optflag("V", "version", "output version information and exit")
     let mut matches = match opts.parse(&args[1..]) {
         Ok(m) => m,
         Err(f) => {

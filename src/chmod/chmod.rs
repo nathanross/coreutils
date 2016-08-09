@@ -27,15 +27,15 @@ const VERSION: &'static str = env!("CARGO_PKG_VERSION");
 
 pub fn uumain(mut args: Vec<String>) -> i32 {
     let mut opts = uucore::coreopts::CoreOptions();
-    opts.optflag("c", "changes", "like verbose but report only when a change is made (unimplemented)");
-    opts.optflag("f", "quiet", "suppress most error messages (unimplemented)"); // TODO: support --silent
-    opts.optflag("v", "verbose", "output a diagnostic for every file processed (unimplemented)");
-    opts.optflag("", "no-preserve-root", "do not treat '/' specially (the default)");
-    opts.optflag("", "preserve-root", "fail to operate recursively on '/'");
-    opts.optopt("", "reference", "use RFILE's mode instead of MODE values", "RFILE");
-    opts.optflag("R", "recursive", "change files and directories recursively");
-    opts.optflag("h", "help", "display this help and exit");
-    opts.optflag("V", "version", "output version information and exit");
+        optflag("c", "changes", "like verbose but report only when a change is made (unimplemented)")
+        optflag("f", "quiet", "suppress most error messages (unimplemented)") // TODO: support --silent
+        optflag("v", "verbose", "output a diagnostic for every file processed (unimplemented)")
+        optflag("", "no-preserve-root", "do not treat '/' specially (the default)")
+        optflag("", "preserve-root", "fail to operate recursively on '/'")
+        optopt("", "reference", "use RFILE's mode instead of MODE values", "RFILE")
+        optflag("R", "recursive", "change files and directories recursively")
+        optflag("h", "help", "display this help and exit")
+        optflag("V", "version", "output version information and exit")
     // sanitize input for - at beginning (e.g. chmod -x testfile). Remove
     // the option and save it for later, after parsing is finished.
     let mut negative_option = None;

@@ -64,17 +64,17 @@ pub fn uumain(args: Vec<String>) -> i32 {
     let mut settings: Settings = Default::default();
     let mut opts = uucore::coreopts::CoreOptions();
 
-    opts.optflag("n", "numeric-sort", "compare according to string numerical value");
-    opts.optflag("h", "human-numeric-sort", "compare according to human readable sizes, eg 1M > 100k");
-    opts.optflag("M", "month-sort", "compare according to month name abbreviation");
-    opts.optflag("r", "reverse", "reverse the output");
-    opts.optflag("h", "help", "display this help and exit");
-    opts.optflag("", "version", "output version information and exit");
-    opts.optopt("o", "output", "write output to FILENAME instead of stdout", "FILENAME");
-    opts.optflag("s", "stable", "stabilize sort by disabling last-resort comparison");
-    opts.optflag("u", "unique", "output only the first of an equal run");
-    opts.optflag("V", "version-sort", "Sort by SemVer version number, eg 1.12.2 > 1.1.2");
-    opts.optflag("c", "check", "check for sorted input; do not sort");
+        optflag("n", "numeric-sort", "compare according to string numerical value")
+        optflag("h", "human-numeric-sort", "compare according to human readable sizes, eg 1M > 100k")
+        optflag("M", "month-sort", "compare according to month name abbreviation")
+        optflag("r", "reverse", "reverse the output")
+        optflag("h", "help", "display this help and exit")
+        optflag("", "version", "output version information and exit")
+        optopt("o", "output", "write output to FILENAME instead of stdout", "FILENAME")
+        optflag("s", "stable", "stabilize sort by disabling last-resort comparison")
+        optflag("u", "unique", "output only the first of an equal run")
+        optflag("V", "version-sort", "Sort by SemVer version number, eg 1.12.2 > 1.1.2")
+        optflag("c", "check", "check for sorted input; do not sort")
 
     let matches = match opts.parse(&args[1..]) {
         Ok(m) => m,

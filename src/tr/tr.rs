@@ -105,11 +105,11 @@ fn usage(opts: &Options) {
 pub fn uumain(args: Vec<String>) -> i32 {
     let mut opts = uucore::coreopts::CoreOptions();
 
-    opts.optflag("c", "complement", "use the complement of SET1");
-    opts.optflag("C", "", "same as -c");
-    opts.optflag("d", "delete", "delete characters in SET1");
-    opts.optflag("h", "help", "display this help and exit");
-    opts.optflag("V", "version", "output version information and exit");
+        optflag("c", "complement", "use the complement of SET1")
+        optflag("C", "", "same as -c")
+        optflag("d", "delete", "delete characters in SET1")
+        optflag("h", "help", "display this help and exit")
+        optflag("V", "version", "output version information and exit")
 
     let matches = match opts.parse(&args[1..]) {
         Ok(m) => m,

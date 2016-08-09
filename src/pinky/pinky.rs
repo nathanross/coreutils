@@ -49,19 +49,19 @@ pub fn uumain(args: Vec<String>) -> i32 {
     opts.optflag("b",
                  "b",
                  "omit the user's home directory and shell in long format");
-    opts.optflag("h", "h", "omit the user's project file in long format");
-    opts.optflag("p", "p", "omit the user's plan file in long format");
-    opts.optflag("s", "s", "do short format output, this is the default");
-    opts.optflag("f", "f", "omit the line of column headings in short format");
-    opts.optflag("w", "w", "omit the user's full name in short format");
+        optflag("h", "h", "omit the user's project file in long format")
+        optflag("p", "p", "omit the user's plan file in long format")
+        optflag("s", "s", "do short format output, this is the default")
+        optflag("f", "f", "omit the line of column headings in short format")
+        optflag("w", "w", "omit the user's full name in short format")
     opts.optflag("i",
                  "i",
                  "omit the user's full name and remote host in short format");
     opts.optflag("q",
                  "q",
                  "omit the user's full name, remote host and idle time in short format");
-    opts.optflag("", "help", "display this help and exit");
-    opts.optflag("", "version", "output version information and exit");
+        optflag("", "help", "display this help and exit")
+        optflag("", "version", "output version information and exit")
 
     let matches = match opts.parse(&args[1..]) {
         Ok(m) => m,

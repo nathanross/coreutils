@@ -33,13 +33,13 @@ pub fn uumain(args: Vec<String>) -> i32 {
     opts.optflag("m", "canonicalize-missing",
                  "canonicalize by following every symlink in every component of the \
                   given name recursively, without requirements on components existence");
-    opts.optflag("n", "no-newline", "do not output the trailing delimiter");
-    opts.optflag("q", "quiet", "suppress most error messages");
-    opts.optflag("s", "silent", "suppress most error messages");
-    opts.optflag("v", "verbose", "report error message");
-    opts.optflag("z", "zero", "separate output with NUL rather than newline");
-    opts.optflag("", "help", "display this help and exit");
-    opts.optflag("", "version", "output version information and exit");
+        optflag("n", "no-newline", "do not output the trailing delimiter")
+        optflag("q", "quiet", "suppress most error messages")
+        optflag("s", "silent", "suppress most error messages")
+        optflag("v", "verbose", "report error message")
+        optflag("z", "zero", "separate output with NUL rather than newline")
+        optflag("", "help", "display this help and exit")
+        optflag("", "version", "output version information and exit")
 
     let matches = match opts.parse(&args[1..]) {
         Ok(m) => m,

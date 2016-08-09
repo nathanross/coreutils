@@ -38,8 +38,8 @@ unsafe fn _vprocmgr_detach_from_console(_: u32) -> *const libc::c_int { std::ptr
 pub fn uumain(args: Vec<String>) -> i32 {
     let mut opts = uucore::coreopts::CoreOptions();
 
-    opts.optflag("h", "help", "Show help and exit");
-    opts.optflag("V", "version", "Show version and exit");
+        optflag("h", "help", "Show help and exit")
+        optflag("V", "version", "Show version and exit")
 
     let matches = match opts.parse(&args[1..]) {
         Ok(m) => m,

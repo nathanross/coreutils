@@ -125,7 +125,7 @@ fn opts() -> getopts::Options {
                                     file", "CONTROL");
 
     // TODO implement flag
-    opts.optflag("b", "", "(unimplemented) like --backup but does not accept an argument");
+        optflag("b", "", "(unimplemented) like --backup but does not accept an argument")
 
     // TODO implement flag
     opts.optflag("C", "compare", "(unimplemented) compare each pair of source and destination\n \
@@ -155,34 +155,34 @@ fn opts() -> getopts::Options {
                                               of SOURCE files to corresponding destination files");
 
     // TODO implement flag
-    opts.optflag("s", "strip", "(unimplemented) strip symbol tables");
+        optflag("s", "strip", "(unimplemented) strip symbol tables")
 
     // TODO implement flag
     opts.optflagopt("", "strip-program", "(unimplemented) program used to strip binaries",
                     "PROGRAM");
 
     // TODO implement flag
-    opts.optopt("S", "suffix", "(unimplemented) override the usual backup suffix", "SUFFIX");
+        optopt("S", "suffix", "(unimplemented) override the usual backup suffix", "SUFFIX")
 
     // TODO implement flag
     opts.optopt("t", "target-directory", "(unimplemented) move all SOURCE arguments into\n \
                                           DIRECTORY", "DIRECTORY");
 
     // TODO implement flag
-    opts.optflag("T", "no-target-directory", "(unimplemented) treat DEST as a normal file");
+        optflag("T", "no-target-directory", "(unimplemented) treat DEST as a normal file")
 
     // TODO implement flag
-    opts.optflag("v", "verbose", "(unimplemented) explain what is being done");
+        optflag("v", "verbose", "(unimplemented) explain what is being done")
 
     // TODO implement flag
-    opts.optflag("P", "preserve-context", "(unimplemented) preserve security context");
+        optflag("P", "preserve-context", "(unimplemented) preserve security context")
 
     // TODO implement flag
     opts.optflagopt("Z", "context", "(unimplemented) set security context of files and\n \
                                      directories", "CONTEXT");
 
-    opts.optflag("h", "help", "display this help and exit");
-    opts.optflag("V", "version", "output version information and exit");
+        optflag("h", "help", "display this help and exit")
+        optflag("V", "version", "output version information and exit")
 
     opts
 }

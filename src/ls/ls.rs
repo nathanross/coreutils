@@ -82,8 +82,8 @@ lazy_static! {
 pub fn uumain(args: Vec<String>) -> i32 {
     let mut opts = uucore::coreopts::CoreOptions();
 
-    opts.optflag("", "help", "display this help and exit");
-    opts.optflag("", "version", "output version information and exit");
+        optflag("", "help", "display this help and exit")
+        optflag("", "version", "output version information and exit")
 
     opts.optflag("a",
                  "all",
@@ -117,7 +117,7 @@ pub fn uumain(args: Vec<String>) -> i32 {
                  "dereference",
                  "When showing file information for a symbolic link, show information for the \
                  file the link references rather than the link itself.");
-    opts.optflag("l", "long", "Display detailed information.");
+        optflag("l", "long", "Display detailed information.")
     opts.optflag("r",
                  "reverse",
                  "Reverse whatever the sorting method is--e.g., list files in reverse \
@@ -125,7 +125,7 @@ pub fn uumain(args: Vec<String>) -> i32 {
     opts.optflag("R",
                  "recursive",
                  "List the contents of all directories recursively.");
-    opts.optflag("S", "", "Sort by file size, largest first.");
+        optflag("S", "", "Sort by file size, largest first.")
     opts.optflag("t",
                  "",
                  "Sort by modification time (the 'mtime' in the inode), newest first.");
@@ -134,7 +134,7 @@ pub fn uumain(args: Vec<String>) -> i32 {
                  "Do not sort; list the files in whatever order they are stored in the \
                  directory.  This is especially useful when listing very large directories, \
                  since not doing any sorting can be noticeably faster.");
-    opts.optflag("", "color", "Color output based on file type.");
+        optflag("", "color", "Color output based on file type.")
 
     let matches = match opts.parse(&args[1..]) {
         Ok(m) => m,

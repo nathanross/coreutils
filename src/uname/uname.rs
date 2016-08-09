@@ -55,14 +55,14 @@ static VERSION: &'static str = env!("CARGO_PKG_VERSION");
 pub fn uumain(args: Vec<String>) -> i32 {
     let mut opts = uucore::coreopts::CoreOptions();
 
-    opts.optflag("h", "help", "display this help and exit");
-    opts.optflag("a", "all", "Behave as though all of the options -mnrsv were specified.");
-    opts.optflag("m", "machine", "print the machine hardware name.");
-    opts.optflag("n", "nodename", "print the nodename (the nodename may be a name that the system is known by to a communications network).");
-    opts.optflag("p", "processor", "print the machine processor architecture name.");
-    opts.optflag("r", "release", "print the operating system release.");
-    opts.optflag("s", "sysname", "print the operating system name.");
-    opts.optflag("v", "version", "print the operating system version.");
+        optflag("h", "help", "display this help and exit")
+        optflag("a", "all", "Behave as though all of the options -mnrsv were specified.")
+        optflag("m", "machine", "print the machine hardware name.")
+        optflag("n", "nodename", "print the nodename (the nodename may be a name that the system is known by to a communications network).")
+        optflag("p", "processor", "print the machine processor architecture name.")
+        optflag("r", "release", "print the operating system release.")
+        optflag("s", "sysname", "print the operating system name.")
+        optflag("v", "version", "print the operating system version.")
 
     let matches = match opts.parse(&args[1..]) {
         Ok(m) => m,

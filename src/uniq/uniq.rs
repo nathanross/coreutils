@@ -150,22 +150,22 @@ fn opt_parsed<T: FromStr>(opt_name: &str, matches: &Matches) -> Option<T> {
 pub fn uumain(args: Vec<String>) -> i32 {
     let mut opts = uucore::coreopts::CoreOptions();
 
-    opts.optflag("c", "count", "prefix lines by the number of occurrences");
-    opts.optflag("d", "repeated", "only print duplicate lines");
+        optflag("c", "count", "prefix lines by the number of occurrences")
+        optflag("d", "repeated", "only print duplicate lines")
     opts.optflagopt(
         "D",
         "all-repeated",
         "print all duplicate lines delimit-method={none(default),prepend,separate} Delimiting is done with blank lines",
         "delimit-method"
     );
-    opts.optopt("f", "skip-fields", "avoid comparing the first N fields", "N");
-    opts.optopt("s", "skip-chars", "avoid comparing the first N characters", "N");
-    opts.optopt("w", "check-chars", "compare no more than N characters in lines", "N");
-    opts.optflag("i", "ignore-case", "ignore differences in case when comparing");
-    opts.optflag("u", "unique", "only print unique lines");
-    opts.optflag("z", "zero-terminated", "end lines with 0 byte, not newline");
-    opts.optflag("h", "help", "display this help and exit");
-    opts.optflag("V", "version", "output version information and exit");
+        optopt("f", "skip-fields", "avoid comparing the first N fields", "N")
+        optopt("s", "skip-chars", "avoid comparing the first N characters", "N")
+        optopt("w", "check-chars", "compare no more than N characters in lines", "N")
+        optflag("i", "ignore-case", "ignore differences in case when comparing")
+        optflag("u", "unique", "only print unique lines")
+        optflag("z", "zero-terminated", "end lines with 0 byte, not newline")
+        optflag("h", "help", "display this help and exit")
+        optflag("V", "version", "output version information and exit")
 
     let matches = match opts.parse(&args[1..]) {
         Ok(m) => m,

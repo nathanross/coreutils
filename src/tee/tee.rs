@@ -39,10 +39,10 @@ struct Options {
 fn options(args: &[String]) -> Result<Options> {
     let mut opts = uucore::coreopts::CoreOptions();
 
-    opts.optflag("a", "append", "append to the given FILEs, do not overwrite");
-    opts.optflag("i", "ignore-interrupts", "ignore interrupt signals");
-    opts.optflag("h", "help", "display this help and exit");
-    opts.optflag("V", "version", "output version information and exit");
+        optflag("a", "append", "append to the given FILEs, do not overwrite")
+        optflag("i", "ignore-interrupts", "ignore interrupt signals")
+        optflag("h", "help", "display this help and exit")
+        optflag("V", "version", "output version information and exit")
 
     opts.parse(&args[1..]).map_err(|e| Error::new(ErrorKind::Other, format!("{}", e))).and_then(|m| {
         let version = format!("{} {}", NAME, VERSION);

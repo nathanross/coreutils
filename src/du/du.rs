@@ -121,7 +121,7 @@ pub fn uumain(args: Vec<String>) -> i32 {
     let mut opts = uucore::coreopts::CoreOptions();
 
     // In task
-    opts.optflag("a", "all", " write counts for all files, not just directories");
+        optflag("a", "all", " write counts for all files, not just directories")
     // In main
     opts.optflag("", "apparent-size", "print apparent sizes,  rather  than  disk  usage;
             although  the apparent  size is usually smaller, it may be larger due to holes
@@ -131,9 +131,9 @@ pub fn uumain(args: Vec<String>) -> i32 {
             E.g., '-BM' prints sizes in units of 1,048,576 bytes.  See SIZE format below.",
             "SIZE");
     // In main
-    opts.optflag("b", "bytes", "equivalent to '--apparent-size --block-size=1'");
+        optflag("b", "bytes", "equivalent to '--apparent-size --block-size=1'")
     // In main
-    opts.optflag("c", "total", "produce a grand total");
+        optflag("c", "total", "produce a grand total")
     // In task
     // opts.optflag("D", "dereference-args", "dereference only symlinks that are listed
     //     on the command line"),
@@ -144,25 +144,25 @@ pub fn uumain(args: Vec<String>) -> i32 {
     // // In task
     // opts.optflag("H", "", "equivalent to --dereference-args (-D)"),
     // In main
-    opts.optflag("h", "human-readable", "print sizes in human readable format (e.g., 1K 234M 2G)");
+        optflag("h", "human-readable", "print sizes in human readable format (e.g., 1K 234M 2G)")
     // In main
-    opts.optflag("", "si", "like -h, but use powers of 1000 not 1024");
+        optflag("", "si", "like -h, but use powers of 1000 not 1024")
     // In main
-    opts.optflag("k", "", "like --block-size=1K");
+        optflag("k", "", "like --block-size=1K")
     // In task
-    opts.optflag("l", "count-links", "count sizes many times if hard linked");
+        optflag("l", "count-links", "count sizes many times if hard linked")
     // // In main
-    opts.optflag("m", "", "like --block-size=1M");
+        optflag("m", "", "like --block-size=1M")
     // // In task
     // opts.optflag("L", "dereference", "dereference all symbolic links"),
     // // In task
     // opts.optflag("P", "no-dereference", "don't follow any symbolic links (this is the default)"),
     // // In main
-    opts.optflag("0", "null", "end each output line with 0 byte rather than newline");
+        optflag("0", "null", "end each output line with 0 byte rather than newline")
     // In main
-    opts.optflag("S", "separate-dirs", "do not include size of subdirectories");
+        optflag("S", "separate-dirs", "do not include size of subdirectories")
     // In main
-    opts.optflag("s", "summarize", "display only a total for each argument");
+        optflag("s", "summarize", "display only a total for each argument")
     // // In task
     // opts.optflag("x", "one-file-system", "skip directories on different file systems"),
     // // In task
@@ -180,8 +180,8 @@ pub fn uumain(args: Vec<String>) -> i32 {
     // In main
     opts.optopt("", "time-style", "show times using style STYLE:
             full-iso, long-iso, iso, +FORMAT FORMAT is interpreted like 'date'", "STYLE");
-    opts.optflag("", "help", "display this help and exit");
-    opts.optflag("V", "version", "output version information and exit");
+        optflag("", "help", "display this help and exit")
+        optflag("V", "version", "output version information and exit")
 
     let matches = match opts.parse(&args[1..]) {
         Ok(m) => m,

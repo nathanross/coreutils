@@ -34,18 +34,18 @@ pub fn uumain(args: Vec<String>) -> i32 {
     // TODO: make getopts support -R in addition to -r
     let mut opts = uucore::coreopts::CoreOptions();
 
-    opts.optflag("f", "force", "ignore nonexistent files and arguments, never prompt");
-    opts.optflag("i", "", "prompt before every removal");
-    opts.optflag("I", "", "prompt once before removing more than three files, or when removing recursively.  Less intrusive than -i, while still giving some protection against most mistakes");
-    opts.optflagopt("", "interactive", "prompt according to WHEN: never, once (-I), or always (-i).  Without WHEN, prompts always", "WHEN");
-    opts.optflag("", "one-file-system", "when removing a hierarchy recursively, skip any directory that is on a file system different from that of the corresponding command line argument (NOT IMPLEMENTED)");
-    opts.optflag("", "no-preserve-root", "do not treat '/' specially");
-    opts.optflag("", "preserve-root", "do not remove '/' (default)");
-    opts.optflag("r", "recursive", "remove directories and their contents recursively");
-    opts.optflag("d", "dir", "remove empty directories");
-    opts.optflag("v", "verbose", "explain what is being done");
-    opts.optflag("h", "help", "display this help and exit");
-    opts.optflag("V", "version", "output version information and exit");
+        optflag("f", "force", "ignore nonexistent files and arguments, never prompt")
+        optflag("i", "", "prompt before every removal")
+        optflag("I", "", "prompt once before removing more than three files, or when removing recursively.  Less intrusive than -i, while still giving some protection against most mistakes")
+        optflagopt("", "interactive", "prompt according to WHEN: never, once (-I), or always (-i).  Without WHEN, prompts always", "WHEN")
+        optflag("", "one-file-system", "when removing a hierarchy recursively, skip any directory that is on a file system different from that of the corresponding command line argument (NOT IMPLEMENTED)")
+        optflag("", "no-preserve-root", "do not treat '/' specially")
+        optflag("", "preserve-root", "do not remove '/' (default)")
+        optflag("r", "recursive", "remove directories and their contents recursively")
+        optflag("d", "dir", "remove empty directories")
+        optflag("v", "verbose", "explain what is being done")
+        optflag("h", "help", "display this help and exit")
+        optflag("V", "version", "output version information and exit")
 
     let matches = match opts.parse(&args[1..]) {
         Ok(m) => m,

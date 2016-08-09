@@ -63,14 +63,14 @@ pub fn uumain(args: Vec<String>) -> i32 {
 
     let mut opts = uucore::coreopts::CoreOptions();
 
-    opts.optopt("c", "bytes", "Number of bytes to print", "k");
-    opts.optopt("n", "lines", "Number of lines to print", "k");
-    opts.optflag("f", "follow", "Print the file as it grows");
-    opts.optopt("s", "sleep-interval", "Number or seconds to sleep between polling the file when running with -f", "n");
-    opts.optflag("z", "zero-terminated", "Line delimiter is NUL, not newline");
-    opts.optflag("h", "help", "help");
-    opts.optflag("V", "version", "version");
-    opts.optflag("v", "verbose", "always output headers giving file names");
+        optopt("c", "bytes", "Number of bytes to print", "k")
+        optopt("n", "lines", "Number of lines to print", "k")
+        optflag("f", "follow", "Print the file as it grows")
+        optopt("s", "sleep-interval", "Number or seconds to sleep between polling the file when running with -f", "n")
+        optflag("z", "zero-terminated", "Line delimiter is NUL, not newline")
+        optflag("h", "help", "help")
+        optflag("V", "version", "version")
+        optflag("v", "verbose", "always output headers giving file names")
 
     let given_options = match opts.parse(&args) {
         Ok (m) => { m }

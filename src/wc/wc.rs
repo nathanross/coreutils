@@ -72,13 +72,13 @@ static VERSION: &'static str = env!("CARGO_PKG_VERSION");
 pub fn uumain(args: Vec<String>) -> i32 {
     let mut opts = uucore::coreopts::CoreOptions();
 
-    opts.optflag("c", "bytes", "print the byte counts");
-    opts.optflag("m", "chars", "print the character counts");
-    opts.optflag("l", "lines", "print the newline counts");
-    opts.optflag("L", "max-line-length", "print the length of the longest line");
-    opts.optflag("w", "words", "print the word counts");
-    opts.optflag("h", "help", "display this help and exit");
-    opts.optflag("V", "version", "output version information and exit");
+        optflag("c", "bytes", "print the byte counts")
+        optflag("m", "chars", "print the character counts")
+        optflag("l", "lines", "print the newline counts")
+        optflag("L", "max-line-length", "print the length of the longest line")
+        optflag("w", "words", "print the word counts")
+        optflag("h", "help", "display this help and exit")
+        optflag("V", "version", "output version information and exit")
 
     let mut matches = match opts.parse(&args[1..]) {
         Ok(m) => m,

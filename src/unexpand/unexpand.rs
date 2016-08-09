@@ -80,13 +80,13 @@ impl Options {
 pub fn uumain(args: Vec<String>) -> i32 {
     let mut opts = uucore::coreopts::CoreOptions();
 
-    opts.optflag("a", "all", "convert all blanks, instead of just initial blanks");
-    opts.optflag("", "first-only", "convert only leading sequences of blanks (overrides -a)");
-    opts.optopt("t", "tabs", "have tabs N characters apart instead of 8 (enables -a)", "N");
-    opts.optopt("t", "tabs", "use comma separated LIST of tab positions (enables -a)", "LIST");
-    opts.optflag("U", "no-utf8", "interpret input file as 8-bit ASCII rather than UTF-8");
-    opts.optflag("h", "help", "display this help and exit");
-    opts.optflag("V", "version", "output version information and exit");
+        optflag("a", "all", "convert all blanks, instead of just initial blanks")
+        optflag("", "first-only", "convert only leading sequences of blanks (overrides -a)")
+        optopt("t", "tabs", "have tabs N characters apart instead of 8 (enables -a)", "N")
+        optopt("t", "tabs", "use comma separated LIST of tab positions (enables -a)", "LIST")
+        optflag("U", "no-utf8", "interpret input file as 8-bit ASCII rather than UTF-8")
+        optflag("h", "help", "display this help and exit")
+        optflag("V", "version", "output version information and exit")
 
     let matches = match opts.parse(&args[1..]) {
         Ok(m) => m,

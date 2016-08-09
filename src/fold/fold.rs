@@ -25,11 +25,11 @@ pub fn uumain(args: Vec<String>) -> i32 {
     let (args, obs_width) = handle_obsolete(&args[..]);
     let mut opts = uucore::coreopts::CoreOptions();
 
-    opts.optflag("b", "bytes", "count using bytes rather than columns (meaning control characters such as newline are not treated specially)");
-    opts.optflag("s", "spaces", "break lines at word boundaries rather than a hard cut-off");
-    opts.optopt("w", "width", "set WIDTH as the maximum line width rather than 80", "WIDTH");
-    opts.optflag("h", "help", "display this help and exit");
-    opts.optflag("V", "version", "output version information and exit");
+        optflag("b", "bytes", "count using bytes rather than columns (meaning control characters such as newline are not treated specially)")
+        optflag("s", "spaces", "break lines at word boundaries rather than a hard cut-off")
+        optopt("w", "width", "set WIDTH as the maximum line width rather than 80", "WIDTH")
+        optflag("h", "help", "display this help and exit")
+        optflag("V", "version", "output version information and exit")
 
     let matches = match opts.parse(&args[1..]) {
         Ok(m) => m,
