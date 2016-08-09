@@ -8,7 +8,6 @@
 // that was distributed with this source code.
 //
 
-extern crate getopts;
 use getopts::Options;
 
 #[macro_use]

@@ -11,7 +11,6 @@
 
 /* last synced with: whoami (GNU coreutils) 8.21 */
 
-extern crate getopts;
 extern crate libc;
 
 #[macro_use]

@@ -9,7 +9,6 @@
  * file that was distributed with this source code.
  */
 
-extern crate getopts;
 
 use getopts::Options;
 use std::cmp::Ordering;

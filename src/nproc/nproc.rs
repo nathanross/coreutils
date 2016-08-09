@@ -9,7 +9,6 @@
  * file that was distributed with this source code.
  */
 
-extern crate getopts;
 extern crate num_cpus;
 
 #[macro_use]

@@ -8,7 +8,6 @@
 
 #![crate_name = "uu_base32"]
 
-extern crate getopts;
 
 #[macro_use]
 extern crate uucore;

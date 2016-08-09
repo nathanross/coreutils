@@ -12,7 +12,6 @@
  */
 
 extern crate bit_set;
-extern crate getopts;
 extern crate vec_map;
 
 #[macro_use]

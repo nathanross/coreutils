@@ -12,7 +12,6 @@
  */
 
 extern crate crypto;
-extern crate getopts;
 extern crate regex_syntax;
 extern crate regex;
 

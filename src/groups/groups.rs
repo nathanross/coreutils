@@ -10,7 +10,6 @@
  *
  */
 
-extern crate getopts;
 
 #[macro_use]
 extern crate uucore;

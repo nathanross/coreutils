@@ -1,4 +1,3 @@
-extern crate getopts;
 extern crate regex;
 
 // parse_style parses a style string into a NumberingStyle.

@@ -14,7 +14,6 @@
  */
 
 #![allow(non_camel_case_types)]
-extern crate getopts;
 extern crate libc;
 
 #[macro_use]

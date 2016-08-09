@@ -11,7 +11,6 @@
 
 /* last synced with: cat (GNU coreutils) 8.13 */
 
-extern crate getopts;
 extern crate libc;
 extern crate time as rtime;
 

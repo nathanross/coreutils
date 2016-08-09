@@ -15,7 +15,6 @@ extern crate uucore;
 use uucore::c_types::getpwnam;
 use uucore::utmpx;
 
-extern crate getopts;
 extern crate libc;
 use libc::{uid_t, gid_t, c_char, S_IWGRP};
 

@@ -9,7 +9,6 @@
  * file that was distributed with this source code.
  */
 
-extern crate getopts;
 
 use std::fs::File;
 use std::io::Read;

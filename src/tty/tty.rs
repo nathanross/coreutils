@@ -11,7 +11,6 @@
  * Synced with http://lingrok.org/xref/coreutils/src/tty.c
  */
 
-extern crate getopts;
 extern crate libc;
 
 #[macro_use]

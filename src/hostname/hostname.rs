@@ -13,7 +13,6 @@
  * https://www.opensource.apple.com/source/shell_cmds/shell_cmds-170/hostname/hostname.c?txt
  */
 
-extern crate getopts;
 extern crate libc;
 
 #[macro_use]

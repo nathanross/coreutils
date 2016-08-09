@@ -11,7 +11,6 @@
  */
 
 extern crate aho_corasick;
-extern crate getopts;
 extern crate memchr;
 extern crate regex_syntax;
 extern crate regex;

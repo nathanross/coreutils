@@ -3,7 +3,6 @@
 // TODO: Make -w flag work with decimals
 // TODO: Support -f flag
 
-extern crate getopts;
 extern crate libc;
 
 #[macro_use]

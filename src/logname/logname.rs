@@ -11,7 +11,6 @@
 
 /* last synced with: logname (GNU coreutils) 8.22 */
 
-extern crate getopts;
 extern crate libc;
 
 #[macro_use]

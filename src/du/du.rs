@@ -11,7 +11,6 @@
 
 #![allow(non_snake_case)]
 
-extern crate getopts;
 extern crate libc;
 extern crate time;
 

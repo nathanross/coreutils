@@ -8,7 +8,6 @@
 // that was distributed with this source code.
 //
 
-extern crate getopts;
 extern crate pretty_bytes;
 extern crate termsize;
 extern crate term_grid;

@@ -9,7 +9,6 @@
  * that was distributed with this source code.
  */
 
-extern crate getopts;
 extern crate libc;
 extern crate time;
 extern crate filetime;
