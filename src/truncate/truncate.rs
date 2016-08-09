@@ -34,7 +34,7 @@ static NAME: &'static str = "truncate";
 static VERSION: &'static str = env!("CARGO_PKG_VERSION");
 
 pub fn uumain(args: Vec<String>) -> i32 {
-    let mut opts = uucore::coreopts::CoreOptions();
+    let matches = uucore::coreopts::CoreOptions();
 
         .optflag("c", "no-create", "do not create files that do not exist")
         .optflag("o", "io-blocks", "treat SIZE as the number of I/O blocks of the file rather than bytes (NOT IMPLEMENTED)")

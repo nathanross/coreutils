@@ -48,7 +48,7 @@ pub enum BackupMode {
 }
 
 pub fn uumain(args: Vec<String>) -> i32 {
-    let mut opts = uucore::coreopts::CoreOptions();
+    let matches = uucore::coreopts::CoreOptions();
 
         .optflag("b", "", "make a backup of each file that would otherwise be overwritten or removed")
         .optflagopt("", "backup", "make a backup of each file that would otherwise be overwritten or removed", "METHOD")

@@ -78,7 +78,7 @@ impl Options {
 }
 
 pub fn uumain(args: Vec<String>) -> i32 {
-    let mut opts = uucore::coreopts::CoreOptions();
+    let matches = uucore::coreopts::CoreOptions();
 
         .optflag("a", "all", "convert all blanks, instead of just initial blanks")
         .optflag("", "first-only", "convert only leading sequences of blanks (overrides -a)")

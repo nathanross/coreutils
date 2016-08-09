@@ -408,7 +408,7 @@ fn cut_files(mut filenames: Vec<String>, mode: Mode) -> i32 {
 }
 
 pub fn uumain(args: Vec<String>) -> i32 {
-    let mut opts = uucore::coreopts::CoreOptions::new();
+    let matches = uucore::coreopts::CoreOptions::new();
 
         .optopt("b", "bytes", "filter byte columns from the input source", "sequence")
         .optopt("c", "characters", "alias for character mode", "sequence")

@@ -120,7 +120,7 @@ fn open_file(name: &str) -> io::Result<LineReader> {
 }
 
 pub fn uumain(args: Vec<String>) -> i32 {
-    let mut opts = uucore::coreopts::CoreOptions();
+    let matches = uucore::coreopts::CoreOptions();
         .optflag("1", "", "suppress column 1 (lines uniq to FILE1)")
         .optflag("2", "", "suppress column 2 (lines uniq to FILE2)")
         .optflag("3", "", "suppress column 3 (lines that appear in both files)")

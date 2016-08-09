@@ -23,7 +23,7 @@ static NAME: &'static str = "relpath";
 static VERSION: &'static str = env!("CARGO_PKG_VERSION");
 
 pub fn uumain(args: Vec<String>) -> i32 {
-    let mut opts = uucore::coreopts::CoreOptions();
+    let matches = uucore::coreopts::CoreOptions();
 
         .optflag("h", "help", "Show help and exit")
         .optflag("V", "version", "Show version and exit")

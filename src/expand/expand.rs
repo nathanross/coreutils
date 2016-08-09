@@ -88,7 +88,7 @@ impl Options {
 }
 
 pub fn uumain(args: Vec<String>) -> i32 {
-    let mut opts = uucore::coreopts::CoreOptions();
+    let matches = uucore::coreopts::CoreOptions();
 
         .optflag("i", "initial", "do not convert tabs after non blanks")
         .optopt("t", "tabs", "have tabs NUMBER characters apart, not 8", "NUMBER")

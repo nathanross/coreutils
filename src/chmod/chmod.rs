@@ -26,7 +26,7 @@ const NAME: &'static str = "chmod";
 const VERSION: &'static str = env!("CARGO_PKG_VERSION");
 
 pub fn uumain(mut args: Vec<String>) -> i32 {
-    let mut opts = uucore::coreopts::CoreOptions();
+    let matches = uucore::coreopts::CoreOptions();
         .optflag("c", "changes", "like verbose but report only when a change is made (unimplemented)")
         .optflag("f", "quiet", "suppress most error messages (unimplemented)") // TODO: support --silent
         .optflag("v", "verbose", "output a diagnostic for every file processed (unimplemented)")

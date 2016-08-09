@@ -22,7 +22,7 @@ static NAME: &'static str = "mkfifo";
 static VERSION: &'static str = env!("CARGO_PKG_VERSION");
 
 pub fn uumain(args: Vec<String>) -> i32 {
-    let mut opts = uucore::coreopts::CoreOptions();
+    let matches = uucore::coreopts::CoreOptions();
 
         .optopt("m", "mode", "file permissions for the fifo", "(default 0666)")
         .optflag("h", "help", "display this help and exit")

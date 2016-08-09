@@ -79,7 +79,7 @@ extern {
 static NAME: &'static str = "id";
 
 pub fn uumain(args: Vec<String>) -> i32 {
-    let mut opts = uucore::coreopts::CoreOptions();
+    let matches = uucore::coreopts::CoreOptions();
         .optflag("h", "", "Show help")
         .optflag("A", "", "Display the process audit (not available on Linux)")
         .optflag("G", "", "Display the different group IDs")

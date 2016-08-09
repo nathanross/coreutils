@@ -30,7 +30,7 @@ static NAME: &'static str = "shuf";
 static VERSION: &'static str = env!("CARGO_PKG_VERSION");
 
 pub fn uumain(args: Vec<String>) -> i32 {
-    let mut opts = uucore::coreopts::CoreOptions();
+    let matches = uucore::coreopts::CoreOptions();
         .optflag("e", "echo", "treat each ARG as an input line")
         .optopt("i", "input-range", "treat each number LO through HI as an input line", "LO-HI")
         .optopt("n", "head-count", "output at most COUNT lines", "COUNT")

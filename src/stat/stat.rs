@@ -867,7 +867,7 @@ impl Stater {
 }
 
 pub fn uumain(args: Vec<String>) -> i32 {
-    let mut opts = uucore::coreopts::CoreOptions();
+    let matches = uucore::coreopts::CoreOptions();
 
         .optflag("h", "help", "display this help and exit")
         .optflag("", "version", "output version information and exit")

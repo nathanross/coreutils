@@ -48,7 +48,7 @@ extern "C" {
 }
 
 pub fn uumain(args: Vec<String>) -> i32 {
-    let mut opts = uucore::coreopts::CoreOptions();
+    let matches = uucore::coreopts::CoreOptions();
 
     opts.optflag("c",
                  "changes",

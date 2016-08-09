@@ -21,7 +21,7 @@ static NAME: &'static str = "base32";
 static VERSION: &'static str = env!("CARGO_PKG_VERSION");
 
 pub fn uumain(args: Vec<String>) -> i32 {
-    let mut opts = uucore::coreopts::CoreOptions();
+    let matches = uucore::coreopts::CoreOptions();
         .optflag("d", "decode", "decode data")
     opts.optflag("i",
                  "ignore-garbage",

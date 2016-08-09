@@ -25,7 +25,7 @@ static VERSION: &'static str = env!("CARGO_PKG_VERSION");
  * Handles option parsing
  */
 pub fn uumain(args: Vec<String>) -> i32 {
-    let mut opts = uucore::coreopts::CoreOptions();
+    let matches = uucore::coreopts::CoreOptions();
 
     // Linux-specific options, not implemented
     // opts.optflag("Z", "context", "set SELinux secutiry context" +

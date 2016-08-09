@@ -37,7 +37,7 @@ enum InputSource<'a> {
 }
 
 pub fn uumain(args: Vec<String>) -> i32 {
-    let mut opts = uucore::coreopts::CoreOptions();
+    let matches = uucore::coreopts::CoreOptions();
 
     opts.optopt("A", "address-radix",
                 "Select the base in which file offsets are printed.", "RADIX");

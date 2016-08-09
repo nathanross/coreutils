@@ -25,7 +25,7 @@ static NAME: &'static str = "cat";
 static VERSION: &'static str = env!("CARGO_PKG_VERSION");
 
 pub fn uumain(args: Vec<String>) -> i32 {
-    let mut opts = uucore::coreopts::CoreOptions();
+    let matches = uucore::coreopts::CoreOptions();
         .optflag("A", "show-all", "equivalent to -vET")
     opts.optflag("b", "number-nonblank",
                  "number nonempty output lines, overrides -n");

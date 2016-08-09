@@ -33,7 +33,7 @@ static DEFAULT_TEMPLATE: &'static str = "tmp.XXXXXXXXXX";
 
 
 pub fn uumain(args: Vec<String>) -> i32 {
-    let mut opts = uucore::coreopts::CoreOptions();
+    let matches = uucore::coreopts::CoreOptions();
         .optflag("d", "directory", "Make a directory instead of a file")
     opts.optflag("u",
                  "dry-run",

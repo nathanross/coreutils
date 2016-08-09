@@ -21,7 +21,7 @@ static NAME: &'static str = "pwd";
 static VERSION: &'static str = env!("CARGO_PKG_VERSION");
 
 pub fn uumain(args: Vec<String>) -> i32 {
-    let mut opts = uucore::coreopts::CoreOptions();
+    let matches = uucore::coreopts::CoreOptions();
 
         .optflag("", "help", "display this help and exit")
         .optflag("", "version", "output version information and exit")

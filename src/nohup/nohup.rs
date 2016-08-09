@@ -36,7 +36,7 @@ extern {
 unsafe fn _vprocmgr_detach_from_console(_: u32) -> *const libc::c_int { std::ptr::null() }
 
 pub fn uumain(args: Vec<String>) -> i32 {
-    let mut opts = uucore::coreopts::CoreOptions();
+    let matches = uucore::coreopts::CoreOptions();
 
         .optflag("h", "help", "Show help and exit")
         .optflag("V", "version", "Show version and exit")

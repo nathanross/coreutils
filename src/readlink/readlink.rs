@@ -22,7 +22,7 @@ const NAME: &'static str = "readlink";
 const VERSION: &'static str = env!("CARGO_PKG_VERSION");
 
 pub fn uumain(args: Vec<String>) -> i32 {
-    let mut opts = uucore::coreopts::CoreOptions();
+    let matches = uucore::coreopts::CoreOptions();
 
     opts.optflag("f", "canonicalize",
                  "canonicalize by following every symlink in every component of the \

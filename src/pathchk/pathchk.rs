@@ -37,7 +37,7 @@ static POSIX_NAME_MAX: usize = 14;
 
 pub fn uumain(args: Vec<String>) -> i32 {
     // add options
-    let mut opts = uucore::coreopts::CoreOptions();
+    let matches = uucore::coreopts::CoreOptions();
         .optflag("p", "posix", "check for (most) POSIX systems")
     opts.optflag("P",
         "posix-special", "check for empty names and leading \"-\"");
