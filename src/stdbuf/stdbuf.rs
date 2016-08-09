@@ -210,7 +210,7 @@ fn get_preload_env() -> (String, String) {
 }
 
 pub fn uumain(args: Vec<String>) -> i32 {
-    let mut opts = Options::new();
+    let mut opts = uucore::coreopts::CoreOptions();
 
     opts.optopt("i", "input", "adjust standard input stream buffering", "MODE");
     opts.optopt("o", "output", "adjust standard output stream buffering", "MODE");

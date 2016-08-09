@@ -21,7 +21,7 @@ static NAME: &'static str = "groups";
 static VERSION: &'static str = env!("CARGO_PKG_VERSION");
 
 pub fn uumain(args: Vec<String>) -> i32 {
-    let mut opts = getopts::Options::new();
+    let mut opts = uucore::coreopts::CoreOptions();
     opts.optflag("h", "help", "display this help menu and exit");
     opts.optflag("V", "version", "display version information and exit");
 

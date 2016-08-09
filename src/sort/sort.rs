@@ -62,7 +62,7 @@ impl Default for Settings {
 
 pub fn uumain(args: Vec<String>) -> i32 {
     let mut settings: Settings = Default::default();
-    let mut opts = getopts::Options::new();
+    let mut opts = uucore::coreopts::CoreOptions();
 
     opts.optflag("n", "numeric-sort", "compare according to string numerical value");
     opts.optflag("h", "human-numeric-sort", "compare according to human readable sizes, eg 1M > 100k");

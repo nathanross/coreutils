@@ -30,7 +30,7 @@ extern {
 }
 
 pub fn uumain(args: Vec<String>) -> i32 {
-    let mut opts = getopts::Options::new();
+    let mut opts = uucore::coreopts::CoreOptions();
 
     opts.optopt("n", "adjustment", "add N to the niceness (default is 10)", "N");
     opts.optflag("h", "help", "display this help and exit");

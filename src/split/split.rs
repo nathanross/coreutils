@@ -23,7 +23,7 @@ static NAME: &'static str = "split";
 static VERSION: &'static str = env!("CARGO_PKG_VERSION");
 
 pub fn uumain(args: Vec<String>) -> i32 {
-    let mut opts = getopts::Options::new();
+    let mut opts = uucore::coreopts::CoreOptions();
 
     opts.optopt("a", "suffix-length", "use suffixes of length N (default 2)", "N");
     opts.optopt("b", "bytes", "put SIZE bytes per output file", "SIZE");

@@ -37,7 +37,7 @@ struct Options {
 }
 
 fn options(args: &[String]) -> Result<Options> {
-    let mut opts = getopts::Options::new();
+    let mut opts = uucore::coreopts::CoreOptions();
 
     opts.optflag("a", "append", "append to the given FILEs, do not overwrite");
     opts.optflag("i", "ignore-interrupts", "ignore interrupt signals");

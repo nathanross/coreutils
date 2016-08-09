@@ -128,7 +128,7 @@ fn parse_options(args: Vec<String>, options: &mut SeqOptions) -> Result<Vec<Stri
 }
 
 fn print_help() {
-    let mut opts = getopts::Options::new();
+    let mut opts = uucore::coreopts::CoreOptions();
 
     opts.optopt("s", "separator", "Separator character (defaults to \\n)", "");
     opts.optopt("t", "terminator", "Terminator character (defaults to separator)", "");

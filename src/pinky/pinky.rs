@@ -42,7 +42,7 @@ static VERSION: &'static str = env!("CARGO_PKG_VERSION");
 const BUFSIZE: usize = 1024;
 
 pub fn uumain(args: Vec<String>) -> i32 {
-    let mut opts = getopts::Options::new();
+    let mut opts = uucore::coreopts::CoreOptions();
     opts.optflag("l",
                  "l",
                  "produce long format output for the specified USERs");

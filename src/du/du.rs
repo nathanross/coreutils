@@ -118,7 +118,7 @@ fn du(path: &PathBuf, mut my_stat: Stat, options: Arc<Options>, depth: usize) ->
 }
 
 pub fn uumain(args: Vec<String>) -> i32 {
-    let mut opts = getopts::Options::new();
+    let mut opts = uucore::coreopts::CoreOptions();
 
     // In task
     opts.optflag("a", "all", " write counts for all files, not just directories");

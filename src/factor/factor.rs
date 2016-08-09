@@ -157,7 +157,7 @@ fn print_factors_str(num_str: &str) {
 }
 
 pub fn uumain(args: Vec<String>) -> i32 {
-    let mut opts = getopts::Options::new();
+    let mut opts = uucore::coreopts::CoreOptions();
     opts.optflag("h", "help", "show this help message");
     opts.optflag("v", "version", "print the version and exit");
 

@@ -89,7 +89,7 @@ pub fn uumain(args: Vec<String>) -> i32 {
     // Default binary in Windows, text mode otherwise
     let binary_flag_default = cfg!(windows);
 
-    let mut opts = getopts::Options::new();
+    let mut opts = uucore::coreopts::CoreOptions();
     opts.optflag("b", "binary", &format!("read in binary mode{}", if binary_flag_default { " (default)" } else { "" }));
     opts.optflag("c", "check", "read hashsums from the FILEs and check them");
     opts.optflag("", "tag", "create a BSD-style checksum");

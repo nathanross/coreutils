@@ -118,7 +118,7 @@ pub fn uumain(args: Vec<String>) -> i32 {
 /// Returns a getopts::Options struct.
 ///
 fn opts() -> getopts::Options {
-    let mut opts = getopts::Options::new();
+    let mut opts = uucore::coreopts::CoreOptions();
 
     // TODO implement flag
     opts.optflagopt("",  "backup", "(unimplemented) make a backup of each existing destination\n \

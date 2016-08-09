@@ -44,7 +44,7 @@ extern {
 pub fn uumain(args: Vec<String>) -> i32 {
     let program = &args[0];
 
-    let mut opts = Options::new();
+    let mut opts = uucore::coreopts::CoreOptions();
     opts.optflag("d", "domain", "Display the name of the DNS domain if possible");
     opts.optflag("i", "ip-address", "Display the network address(es) of the host");
     opts.optflag("f", "fqdn", "Display the FQDN (Fully Qualified Domain Name) (default)");   // TODO: support --long

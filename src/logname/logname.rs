@@ -42,7 +42,7 @@ pub fn uumain(args: Vec<String>) -> i32 {
     //
     // Argument parsing
     //
-    let mut opts = getopts::Options::new();
+    let mut opts = uucore::coreopts::CoreOptions();
 
     opts.optflag("h", "help", "display this help and exit");
     opts.optflag("V", "version", "output version information and exit");

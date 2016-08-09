@@ -23,7 +23,7 @@ static VERSION: &'static str = env!("CARGO_PKG_VERSION");
 
 pub fn uumain(args: Vec<String>) -> i32 {
     let (args, obs_width) = handle_obsolete(&args[..]);
-    let mut opts = getopts::Options::new();
+    let mut opts = uucore::coreopts::CoreOptions();
 
     opts.optflag("b", "bytes", "count using bytes rather than columns (meaning control characters such as newline are not treated specially)");
     opts.optflag("s", "spaces", "break lines at word boundaries rather than a hard cut-off");

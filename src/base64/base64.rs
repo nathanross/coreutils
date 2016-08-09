@@ -22,7 +22,7 @@ static NAME: &'static str = "base64";
 static VERSION: &'static str = env!("CARGO_PKG_VERSION");
 
 pub fn uumain(args: Vec<String>) -> i32 {
-    let mut opts = Options::new();
+    let mut opts = uucore::coreopts::CoreOptions();
     opts.optflag("d", "decode", "decode data");
     opts.optflag("i",
                  "ignore-garbage",

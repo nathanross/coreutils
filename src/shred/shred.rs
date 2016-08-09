@@ -190,7 +190,7 @@ impl<'a> Iterator for BytesGenerator<'a> {
 }
 
 pub fn uumain(args: Vec<String>) -> i32 {
-    let mut opts = getopts::Options::new();
+    let mut opts = uucore::coreopts::CoreOptions();
 
     // TODO: Add force option
     opts.optopt("n", "iterations", "overwrite N times instead of the default (3)", "N");

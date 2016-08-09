@@ -103,7 +103,7 @@ fn usage(opts: &Options) {
 }
 
 pub fn uumain(args: Vec<String>) -> i32 {
-    let mut opts = Options::new();
+    let mut opts = uucore::coreopts::CoreOptions();
 
     opts.optflag("c", "complement", "use the complement of SET1");
     opts.optflag("C", "", "same as -c");

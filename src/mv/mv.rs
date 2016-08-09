@@ -49,7 +49,7 @@ pub enum BackupMode {
 }
 
 pub fn uumain(args: Vec<String>) -> i32 {
-    let mut opts = getopts::Options::new();
+    let mut opts = uucore::coreopts::CoreOptions();
 
     opts.optflagopt("",  "backup", "make a backup of each existing destination file", "CONTROL");
     opts.optflag("b", "", "like --backup but does not accept an argument");

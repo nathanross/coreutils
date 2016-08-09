@@ -21,7 +21,7 @@ static NAME: &'static str = "nproc";
 static VERSION: &'static str = env!("CARGO_PKG_VERSION");
 
 pub fn uumain(args: Vec<String>) -> i32 {
-    let mut opts = getopts::Options::new();
+    let mut opts = uucore::coreopts::CoreOptions();
 
     opts.optflag("", "all", "print the number of cores available to the system");
     opts.optopt("", "ignore", "ignore up to N cores", "N");

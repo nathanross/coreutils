@@ -23,7 +23,7 @@ static NAME: &'static str = "paste";
 static VERSION: &'static str = env!("CARGO_PKG_VERSION");
 
 pub fn uumain(args: Vec<String>) -> i32 {
-    let mut opts = getopts::Options::new();
+    let mut opts = uucore::coreopts::CoreOptions();
 
     opts.optflag("s", "serial", "paste one file at a time instead of in parallel");
     opts.optopt("d", "delimiters", "reuse characters from LIST instead of TABs", "LIST");

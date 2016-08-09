@@ -124,7 +124,7 @@ fn parse_options(args: Vec<String>, options: &mut EchoOptions) -> Option<Vec<Str
 }
 
 fn print_help() {
-    let mut opts = getopts::Options::new();
+    let mut opts = uucore::coreopts::CoreOptions();
     opts.optflag("n", "", "do not output the trailing newline");
     opts.optflag("e", "", "enable interpretation of backslash escapes");
     opts.optflag("E", "", "disable interpretation of backslash escapes (default)");

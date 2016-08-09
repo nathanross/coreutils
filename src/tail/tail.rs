@@ -61,7 +61,7 @@ pub fn uumain(args: Vec<String>) -> i32 {
 
     let args = options;
 
-    let mut opts = getopts::Options::new();
+    let mut opts = uucore::coreopts::CoreOptions();
 
     opts.optopt("c", "bytes", "Number of bytes to print", "k");
     opts.optopt("n", "lines", "Number of lines to print", "k");

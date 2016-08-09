@@ -40,7 +40,7 @@ static NAME: &'static str = "chroot";
 static VERSION: &'static str = env!("CARGO_PKG_VERSION");
 
 pub fn uumain(args: Vec<String>) -> i32 {
-    let mut opts = Options::new();
+    let mut opts = uucore::coreopts::CoreOptions();
 
     opts.optopt("u", "user", "User (ID or name) to switch before running the program", "USER");
     opts.optopt("g", "group", "Group (ID or name) to switch to", "GROUP");

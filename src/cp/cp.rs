@@ -29,7 +29,7 @@ static NAME: &'static str = "cp";
 static VERSION: &'static str = env!("CARGO_PKG_VERSION");
 
 pub fn uumain(args: Vec<String>) -> i32 {
-    let mut opts = Options::new();
+    let mut opts = uucore::coreopts::CoreOptions();
 
     opts.optflag("h", "help", "display this help and exit");
     opts.optflag("", "version", "output version information and exit");

@@ -28,7 +28,7 @@ static ERR_EXIT_STATUS: i32 = 125;
 pub fn uumain(args: Vec<String>) -> i32 {
     let program = args[0].clone();
 
-    let mut opts = getopts::Options::new();
+    let mut opts = uucore::coreopts::CoreOptions();
     opts.optflag("", "preserve-status", "exit with the same status as COMMAND, even when the command times out");
     opts.optflag("", "foreground", "when not running timeout directly from a shell prompt, allow COMMAND to read from the TTY and get TTY signals; in this mode, children of COMMAND will not be timed out");
     opts.optopt("k", "kill-after", "also send a KILL signal if COMMAND is still running this long after the initial signal was sent", "DURATION");

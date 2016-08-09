@@ -504,7 +504,7 @@ fn write_traditional_output(config: &Config,
 }
 
 pub fn uumain(args: Vec<String>) -> i32 {
-    let mut opts = Options::new();
+    let mut opts = uucore::coreopts::CoreOptions();
     opts.optflag("A", "auto-reference",
         "output automatically generated references");
     opts.optflag("G", "traditional", "behave more like System V 'ptx'");

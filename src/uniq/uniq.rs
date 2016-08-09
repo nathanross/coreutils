@@ -148,7 +148,7 @@ fn opt_parsed<T: FromStr>(opt_name: &str, matches: &Matches) -> Option<T> {
 }
 
 pub fn uumain(args: Vec<String>) -> i32 {
-    let mut opts = Options::new();
+    let mut opts = uucore::coreopts::CoreOptions();
 
     opts.optflag("c", "count", "prefix lines by the number of occurrences");
     opts.optflag("d", "repeated", "only print duplicate lines");

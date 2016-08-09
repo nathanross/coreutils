@@ -75,7 +75,7 @@ fn open(name: &str) -> Result<Box<Read>> {
 }
 
 pub fn uumain(args: Vec<String>) -> i32 {
-    let mut opts = getopts::Options::new();
+    let mut opts = uucore::coreopts::CoreOptions();
 
     opts.optflag("r", "", "use the BSD compatible algorithm (default)");
     opts.optflag("s", "sysv", "use System V compatible algorithm");

@@ -21,7 +21,7 @@ static NAME: &'static str = "tac";
 static VERSION: &'static str = env!("CARGO_PKG_VERSION");
 
 pub fn uumain(args: Vec<String>) -> i32 {
-    let mut opts = getopts::Options::new();
+    let mut opts = uucore::coreopts::CoreOptions();
 
     opts.optflag("b", "before", "attach the separator before instead of after");
     opts.optflag("r", "regex", "interpret the sequence as a regular expression (NOT IMPLEMENTED)");

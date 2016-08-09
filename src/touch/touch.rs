@@ -43,7 +43,7 @@ macro_rules! local_tm_to_filetime(
 );
 
 pub fn uumain(args: Vec<String>) -> i32 {
-    let mut opts = getopts::Options::new();
+    let mut opts = uucore::coreopts::CoreOptions();
 
     opts.optflag("a", "",               "change only the access time");
     opts.optflag("c", "no-create",      "do not create any files");

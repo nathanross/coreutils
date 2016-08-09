@@ -74,7 +74,7 @@ enum NumberFormat {
 }
 
 pub fn uumain(args: Vec<String>) -> i32 {
-    let mut opts = getopts::Options::new();
+    let mut opts = uucore::coreopts::CoreOptions();
 
     opts.optopt("b", "body-numbering", "use STYLE for numbering body lines", "STYLE");
     opts.optopt("d", "section-delimiter", "use CC for separating logical pages", "CC");

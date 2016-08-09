@@ -32,7 +32,7 @@ static VERSION: &'static str = env!("CARGO_PKG_VERSION");
 
 pub fn uumain(args: Vec<String>) -> i32 {
     // TODO: make getopts support -R in addition to -r
-    let mut opts = getopts::Options::new();
+    let mut opts = uucore::coreopts::CoreOptions();
 
     opts.optflag("f", "force", "ignore nonexistent files and arguments, never prompt");
     opts.optflag("i", "", "prompt before every removal");
