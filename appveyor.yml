@@ -34,7 +34,7 @@ install:
 
   - ps: >-
       cd ${env:DIR_TEMP_RS};
-  - %DIR_TEMP_RS%\rust.exe /VERYSILENT /NORESTART /DIR="C:\Program Files (x86)\Rust"
+  - "%DIR_TEMP_RS%\rust.exe" /VERYSILENT /NORESTART /DIR="C:\Program Files (x86)\Rust"
   - rustc -V
   - cargo -V
 
