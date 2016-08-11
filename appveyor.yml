@@ -34,9 +34,11 @@ install:
 
   - ps: >-
       cd ${env:DIR_TEMP_RS};
-  - "%DIR_TEMP_RS%\rust.exe" /VERYSILENT /NORESTART /DIR="C:\Program Files (x86)\Rust"
-  - rustc -V
-  - cargo -V
+      ls;
+      New-Item -ItemType Directory -Force -Path "C:\Rust" | Out-Null;
+      .\rust.exe /NORESTART /DIR="C:\Rust";
+      cd "C:\Rust";
+      ls;
 
 artifacts:
   - path: target\debug\uutils.exe
