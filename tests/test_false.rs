@@ -7,7 +7,15 @@ fn new_ucmd() -> UCommand {
 
 #[test]
 fn test_exit_code() {
-    let exit_status = new_ucmd()
-        .run().success;
-    assert_eq!(exit_status, false);
+    new_ucmd().fails().no_stdout().no_stderr();
+}
+
+#[test]
+fn test_help_ignored() {
+    new_ucmd().arg("--help").fails().no_stdout().no_stderr();
+}
+
+#[test]
+fn test_version_ignored() {
+    new_ucmd().arg("--version").fails().no_stdout().no_stderr();
 }
