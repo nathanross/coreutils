@@ -22,6 +22,7 @@ install:
         $download_loc = "https://static.rust-lang.org/dist/rust-nightly-${env:TARGET}.exe";
         Start-FileDownload $download_loc -FileName "${env:DIR_TEMP_RS}\rust.exe";
       }
+      Copy-Item "${env:DIR_TEMP_RS}\rust.exe" "${env:APPVEYOR_BUILD_FOLDER}\rust.exe"
   - SET PATH=%PATH%;C:\Program Files (x86)\Rust\bin;C:\MinGW\bin
 
   # Use the system msys if we can
@@ -32,13 +33,11 @@ install:
   - if defined MINGW_ARCHIVE 7z x -y "%MINGW_ARCHIVE%" > nul
   - if defined MINGW_ARCHIVE set PATH=%CD%\%MINGW_DIR%\bin;C:\msys64\usr\bin;%PATH%
 
-  - ps: >-
-      cd ${env:DIR_TEMP_RS};
-      ls;
-      New-Item -ItemType Directory -Force -Path "C:\Rust" | Out-Null;
-      .\rust.exe /NORESTART /DIR="C:\Rust";
-      cd "C:\Rust";
-      ls;
+
+  - rust.exe /VERYSILENT /NORESTART /DIR="C:\Program Files (x86)\Rust"
+
+  - rustc -V
+  - cargo -V
 
 artifacts:
   - path: target\debug\uutils.exe
