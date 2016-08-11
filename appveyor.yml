@@ -1,4 +1,9 @@
 environment:
+  global:
+    DIR_DOWNLOADS_RS: c:\rust\download\
+    DIR_INSTALLS_RS: c:\rust\installed\
+    REINSTALL: 0
+  
   matrix:
   - TARGET: x86_64-pc-windows-msvc
   - TARGET: i686-pc-windows-msvc
@@ -10,8 +15,20 @@ environment:
     MSYS_BITS: 64
 
 install:
-  - ps: Start-FileDownload "https://static.rust-lang.org/dist/rust-nightly-${env:TARGET}.exe"
-  - SET PATH=%PATH%;C:\Program Files (x86)\Rust\bin;C:\MinGW\bin
+  - ps: >-
+      $today = Get-Date -UFormat "%Y_%m_%d";
+      $env:DIR_NIGHTLY_RS="${env:DIR_INSTALLS_RS}\$today\";
+      if (-not (Test-Path -Path "${env:DIR_NIGHTLY_RS}")) {
+        $env:INSTALL_RUST=1;
+        if (Test-Path -Path "${env:DIR_DOWNLOADS_RS}") { rm -Recurse ${env:DIR_DOWNLOADS_RS}\*; }
+        if (Test-Path -Path "${env:DIR_INSTALLS_RS}") { rm -Recurse ${env:DIR_INSTALLS_RS}\*; }
+        New-Item -ItemType Directory -Force -Path ${env:DIR_DOWNLOADS_RS} | Out-Null;
+        New-Item -ItemType Directory -Force -Path ${env:DIR_INSTALLS_RS} | Out-Null;
+        $download_url = "https://static.rust-lang.org/dist/rust-nightly-${env:TARGET}.exe";
+        Start-FileDownload $download_url -FileName "${env:DIR_DOWNLOADS_RS}\rust.exe";
+        Copy-Item "${env:DIR_DOWNLOADS_RS}\rust.exe" "${env:APPVEYOR_BUILD_FOLDER}\rust.exe"
+      }
+  - SET PATH=%PATH%;%DIR_NIGHTLY_RS%\bin;C:\MinGW\bin
 
   # Use the system msys if we can
   - if defined MSYS_BITS set PATH=C:\msys64\mingw%MSYS_BITS%\bin;C:\msys64\usr\bin;%PATH%
@@ -21,7 +38,7 @@ install:
   - if defined MINGW_ARCHIVE 7z x -y "%MINGW_ARCHIVE%" > nul
   - if defined MINGW_ARCHIVE set PATH=%CD%\%MINGW_DIR%\bin;C:\msys64\usr\bin;%PATH%
 
-  - rust-nightly-%TARGET%.exe /VERYSILENT /NORESTART /DIR="C:\Program Files (x86)\Rust"
+  - if defined INSTALL_RUST rust.exe /VERYSILENT /NORESTART /DIR="%DIR_NIGHTLY_RS%"
 
   - rustc -V
   - cargo -V
@@ -34,3 +51,6 @@ build: false
 
 test_script:
   - cargo test --no-fail-fast --features "nightly generic" --no-default-features
+
+cache:
+  - c:\rust\installed
