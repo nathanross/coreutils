@@ -1,4 +1,7 @@
 environment:
+  global:
+    DIR_TEMP_RS: c:\temp\rust_download\
+  
   matrix:
   - TARGET: x86_64-pc-windows-msvc
   - TARGET: i686-pc-windows-msvc
@@ -10,7 +13,15 @@ environment:
     MSYS_BITS: 64
 
 install:
-  - ps: Start-FileDownload "https://static.rust-lang.org/dist/rust-nightly-${env:TARGET}.exe"
+  - ps: >-
+      if (-not (Test-Path "${env:DIR_TEMP_RS}\rust.exe")) {
+        if (Test-Path "${env:DIR_TEMP_RS}") {
+          rm -Recurse ${env:DIR_TEMP_RS}\*;
+        }
+        New-Item -ItemType Directory -Force -Path ${env:DIR_TEMP_RS} | Out-Null;
+        $download_loc = "https://static.rust-lang.org/dist/rust-nightly-${env:TARGET}.exe";
+        Start-FileDownload $download_loc -FileName "${env:DIR_TEMP_RS}\rust.exe";
+      }
   - SET PATH=%PATH%;C:\Program Files (x86)\Rust\bin;C:\MinGW\bin
 
   # Use the system msys if we can
@@ -21,8 +32,9 @@ install:
   - if defined MINGW_ARCHIVE 7z x -y "%MINGW_ARCHIVE%" > nul
   - if defined MINGW_ARCHIVE set PATH=%CD%\%MINGW_DIR%\bin;C:\msys64\usr\bin;%PATH%
 
-  - rust-nightly-%TARGET%.exe /VERYSILENT /NORESTART /DIR="C:\Program Files (x86)\Rust"
-
+  - ps: >-
+      cd ${env:DIR_TEMP_RS};
+  - %DIR_TEMP_RS%\rust.exe /VERYSILENT /NORESTART /DIR="C:\Program Files (x86)\Rust"
   - rustc -V
   - cargo -V
 
@@ -34,3 +46,6 @@ build: false
 
 test_script:
   - cargo test --no-fail-fast --features "nightly generic" --no-default-features
+
+cache:
+  - c:\temp\rust_download
