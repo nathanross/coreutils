@@ -237,8 +237,5 @@ fn test_printf() {
 
 #[cfg(target_os = "linux")]
 fn expected_result(args: &[&str]) -> String {
-    use std::process::Command;
-
-    let output = Command::new(UTIL_NAME).args(args).output().unwrap();
-    String::from_utf8_lossy(&output.stdout).into_owned()
+    TestScenario::new(UTIL_NAME).cmd(UTIL_NAME).args(args).run().stdout
 }
