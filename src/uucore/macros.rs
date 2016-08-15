@@ -335,7 +335,7 @@ macro_rules! msg_wrong_number_of_arguments {
         msg_args_invalid_value!(format!("expects {}-{} arguments", $min, $max))
     );
     ($exact:expr) => (
-        if ($exact == "1") {
+        if $exact == 1 {
             msg_args_invalid_value!("expects 1 argument")
         } else {
             msg_args_invalid_value!(format!("expects {} arguments", $exact))
